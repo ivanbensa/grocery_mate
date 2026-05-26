@@ -1,287 +1,314 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GroceryBuddy</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/services/recipes.service.js"></script>
+    <script src="/components//menu-library/recipe-small-card.js"></script>
+  </head>
 
-<body>
-
-<main class="container-fluid p-4">
-
-    <div class="row g-4">
-
+  <body>
+    <main class="container-fluid p-4">
+      <div class="row g-4">
         <!-- MENU LIBRARY -->
         <section class="col-lg-4">
-            <div class="app-card h-100">
-                <h4><span class="section-number">1</span> Menu Library</h4>
+          <div class="app-card h-100">
+            <h4><span class="section-number">1</span> Menu Library</h4>
 
-                <div class="input-group my-4">
-                    <span class="input-group-text bg-white">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Search recipes...">
-                </div>
-
-                <div class="d-flex gap-2 mb-4 flex-wrap">
-                    <button class="btn btn-outline-success active">All</button>
-                    <button class="btn btn-light">Breakfast</button>
-                    <button class="btn btn-light">Lunch</button>
-                    <button class="btn btn-light">Dinner</button>
-                    <button class="btn btn-light">Snacks</button>
-                </div>
-
-                <div class="row g-3">
-                    <div class="col-6">
-                        <div class="recipe-small-card">
-                            <img src="images/chicken.jpg" alt="">
-                            <h6>Lemon Garlic Chicken</h6>
-                            <button class="small-add-btn">+</button>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="recipe-small-card">
-                            <img src="images/salad.jpg" alt="">
-                            <h6>Veggie Stir Fry</h6>
-                            <button class="small-add-btn">+</button>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="recipe-small-card">
-                            <img src="images/pasta.jpg" alt="">
-                            <h6>Pasta Primavera</h6>
-                            <button class="small-add-btn">+</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="input-group my-4">
+              <span class="input-group-text bg-white">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search recipes..."
+              />
             </div>
+
+            <div class="d-flex gap-2 mb-4 flex-wrap">
+              <button class="btn btn-outline-success active">All</button>
+              <button class="btn btn-light">Breakfast</button>
+              <button class="btn btn-light">Lunch</button>
+              <button class="btn btn-light">Dinner</button>
+              <button class="btn btn-light">Snacks</button>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-6">
+                <recipe-small-card recipe-id="1"></recipe-small-card>
+                <!-- <div class="recipe-small-card">
+                  <img src="images/chicken.jpg" alt="" />
+                  <h6>Lemon Garlic Chicken</h6>
+                  <button class="small-add-btn">+</button>
+                </div> -->
+              </div>
+
+              <div class="col-6">
+                <recipe-small-card recipe-id="2"></recipe-small-card>
+                <!-- <div class="recipe-small-card">
+                  <img src="images/salad.jpg" alt="" />
+                  <h6>Veggie Stir Fry</h6>
+                  <button class="small-add-btn">+</button>
+                </div> -->
+              </div>
+
+              <div class="col-6">
+                <div class="recipe-small-card">
+                  <img src="images/pasta.jpg" alt="" />
+                  <h6>Pasta Primavera</h6>
+                  <button class="small-add-btn">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- WEEKLY PLAN -->
         <section class="col-lg-4">
-            <div class="app-card h-100">
-                <h4><span class="section-number">2</span> Weekly Plan</h4>
+          <div class="app-card h-100">
+            <h4><span class="section-number">2</span> Weekly Plan</h4>
 
-                <div class="d-flex justify-content-between align-items-center my-4">
-                    <i class="fa-solid fa-chevron-left"></i>
-                    <strong>May 20 - May 26</strong>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-                <div class="weekly-item">
-                    <strong>Mon</strong>
-                    <img src="images/chicken.jpg" alt="">
-                    <span>Lemon Garlic Chicken</span>
-                    <button class="btn btn-outline-success btn-sm">View Recipe</button>
-                    <i class="fa-regular fa-trash-can text-danger"></i>
-                </div>
-
-                <div class="weekly-item">
-                    <strong>Tue</strong>
-                    <img src="images/salad.jpg" alt="">
-                    <span>Veggie Stir Fry</span>
-                    <button class="btn btn-outline-success btn-sm">View Recipe</button>
-                    <i class="fa-regular fa-trash-can text-danger"></i>
-                </div>
-
-                <div class="weekly-item">
-                    <strong>Wed</strong>
-                    <img src="images/pasta.jpg" alt="">
-                    <span>Pasta Primavera</span>
-                    <button class="btn btn-outline-success btn-sm">View Recipe</button>
-                    <i class="fa-regular fa-trash-can text-danger"></i>
-                </div>
-
-                <button class="btn btn-outline-success w-100 mt-4">
-                    <i class="fa-solid fa-plus me-2"></i>
-                    Add Menu
-                </button>
+            <div class="d-flex justify-content-between align-items-center my-4">
+              <i class="fa-solid fa-chevron-left"></i>
+              <strong>May 20 - May 26</strong>
+              <i class="fa-solid fa-chevron-right"></i>
             </div>
+
+            <div class="weekly-item">
+              <strong>Mon</strong>
+              <img src="images/chicken.jpg" alt="" />
+              <span>Lemon Garlic Chicken</span>
+              <button class="btn btn-outline-success btn-sm">
+                View Recipe
+              </button>
+              <i class="fa-regular fa-trash-can text-danger"></i>
+            </div>
+
+            <div class="weekly-item">
+              <strong>Tue</strong>
+              <img src="images/salad.jpg" alt="" />
+              <span>Veggie Stir Fry</span>
+              <button class="btn btn-outline-success btn-sm">
+                View Recipe
+              </button>
+              <i class="fa-regular fa-trash-can text-danger"></i>
+            </div>
+
+            <div class="weekly-item">
+              <strong>Wed</strong>
+              <img src="images/pasta.jpg" alt="" />
+              <span>Pasta Primavera</span>
+              <button class="btn btn-outline-success btn-sm">
+                View Recipe
+              </button>
+              <i class="fa-regular fa-trash-can text-danger"></i>
+            </div>
+
+            <button class="btn btn-outline-success w-100 mt-4">
+              <i class="fa-solid fa-plus me-2"></i>
+              Add Menu
+            </button>
+          </div>
         </section>
 
         <!-- INVENTORY -->
         <section class="col-lg-4">
-            <div class="app-card h-100">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4><span class="section-number">3</span> Inventory</h4>
-                    <button class="btn btn-outline-danger btn-sm" id="invClearBtn">Clear All</button>
-                </div>
-
-                <button class="btn btn-outline-success my-4" id="invAddBtn">
-                    <i class="fa-solid fa-plus me-2"></i>
-                    Add Item
-                </button>
-
-                <div id="invFormContainer"></div> 
-                <table class="table align-middle">
-                    <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th class="text-end">Actions</th>
-                    </tr>
-                    </thead>
-
-                    <tbody id="invTableBody">
-                    <tr>
-                        <td>Rice</td>
-                        <td>2 cups</td>
-                        <td class="text-end">
-                            <i class="fa-solid fa-pen me-3"></i>
-                            <i class="fa-regular fa-trash-can text-danger"></i>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Pasta</td>
-                        <td>1 cup</td>
-                        <td class="text-end">
-                            <i class="fa-solid fa-pen me-3"></i>
-                            <i class="fa-regular fa-trash-can text-danger"></i>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Olive Oil</td>
-                        <td>500 ml</td>
-                        <td class="text-end">
-                            <i class="fa-solid fa-pen me-3"></i>
-                            <i class="fa-regular fa-trash-can text-danger"></i>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Garlic</td>
-                        <td>3 bulbs</td>
-                        <td class="text-end">
-                            <i class="fa-solid fa-pen me-3"></i>
-                            <i class="fa-regular fa-trash-can text-danger"></i>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+          <div class="app-card h-100">
+            <div class="d-flex justify-content-between align-items-center">
+              <h4><span class="section-number">3</span> Inventory</h4>
+              <button class="btn btn-outline-danger btn-sm" id="invClearBtn">
+                Clear All
+              </button>
             </div>
+
+            <button class="btn btn-outline-success my-4" id="invAddBtn">
+              <i class="fa-solid fa-plus me-2"></i>
+              Add Item
+            </button>
+
+            <div id="invFormContainer"></div>
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Quantity</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="invTableBody">
+                <tr>
+                  <td>Rice</td>
+                  <td>2 cups</td>
+                  <td class="text-end">
+                    <i class="fa-solid fa-pen me-3"></i>
+                    <i class="fa-regular fa-trash-can text-danger"></i>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Pasta</td>
+                  <td>1 cup</td>
+                  <td class="text-end">
+                    <i class="fa-solid fa-pen me-3"></i>
+                    <i class="fa-regular fa-trash-can text-danger"></i>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Olive Oil</td>
+                  <td>500 ml</td>
+                  <td class="text-end">
+                    <i class="fa-solid fa-pen me-3"></i>
+                    <i class="fa-regular fa-trash-can text-danger"></i>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Garlic</td>
+                  <td>3 bulbs</td>
+                  <td class="text-end">
+                    <i class="fa-solid fa-pen me-3"></i>
+                    <i class="fa-regular fa-trash-can text-danger"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <!-- SHOPPING LIST -->
         <section class="col-lg-5">
-            <div class="app-card h-100">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4><span class="section-number">4</span> Shopping List</h4>
-                    <button class="btn btn-outline-danger btn-sm">Clear All</button>
-                </div>
-
-                <button class="btn btn-outline-success my-4">
-                    <i class="fa-solid fa-plus me-2"></i>
-                    Add Item
-                </button>
-
-                <table class="table align-middle">
-                    <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th class="text-end">Actions</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    <tr>
-                        <td><i class="fa-regular fa-circle me-2"></i> Chicken Breast</td>
-                        <td>500 g</td>
-                        <td class="text-end">
-                            <i class="fa-solid fa-pen me-3"></i>
-                            <i class="fa-regular fa-trash-can text-danger"></i>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><i class="fa-regular fa-circle me-2"></i> Broccoli</td>
-                        <td>1 head</td>
-                        <td class="text-end">
-                            <i class="fa-solid fa-pen me-3"></i>
-                            <i class="fa-regular fa-trash-can text-danger"></i>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><i class="fa-regular fa-circle me-2"></i> Milk</td>
-                        <td>1 L</td>
-                        <td class="text-end">
-                            <i class="fa-solid fa-pen me-3"></i>
-                            <i class="fa-regular fa-trash-can text-danger"></i>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+          <div class="app-card h-100">
+            <div class="d-flex justify-content-between align-items-center">
+              <h4><span class="section-number">4</span> Shopping List</h4>
+              <button class="btn btn-outline-danger btn-sm">Clear All</button>
             </div>
+
+            <button class="btn btn-outline-success my-4">
+              <i class="fa-solid fa-plus me-2"></i>
+              Add Item
+            </button>
+
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Quantity</th>
+                  <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>
+                    <i class="fa-regular fa-circle me-2"></i> Chicken Breast
+                  </td>
+                  <td>500 g</td>
+                  <td class="text-end">
+                    <i class="fa-solid fa-pen me-3"></i>
+                    <i class="fa-regular fa-trash-can text-danger"></i>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><i class="fa-regular fa-circle me-2"></i> Broccoli</td>
+                  <td>1 head</td>
+                  <td class="text-end">
+                    <i class="fa-solid fa-pen me-3"></i>
+                    <i class="fa-regular fa-trash-can text-danger"></i>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><i class="fa-regular fa-circle me-2"></i> Milk</td>
+                  <td>1 L</td>
+                  <td class="text-end">
+                    <i class="fa-solid fa-pen me-3"></i>
+                    <i class="fa-regular fa-trash-can text-danger"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <!-- RECIPE DETAILS -->
         <section class="col-lg-7">
-            <div class="app-card h-100">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4><span class="section-number">5</span> Recipe</h4>
-                    <button class="btn btn-light btn-sm">
-                        <i class="fa-solid fa-arrow-left me-2"></i>
-                        Back
-                    </button>
-                </div>
-
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-5">
-                        <img src="images/chicken.jpg" class="recipe-detail-img" alt="">
-                    </div>
-
-                    <div class="col-md-7">
-                        <h3>Lemon Garlic Chicken</h3>
-
-                        <div class="d-flex gap-4 text-muted my-3 flex-wrap">
-                            <span><i class="fa-regular fa-clock me-1"></i>40 mins</span>
-                            <span><i class="fa-solid fa-chart-simple me-1"></i>Easy</span>
-                            <span><i class="fa-solid fa-users me-1"></i>4 servings</span>
-                        </div>
-
-                        <div class="row mt-4">
-                            <div class="col-md-5">
-                                <h6 class="text-success">Ingredients</h6>
-                                <ul class="small">
-                                    <li>500 g Chicken Breast</li>
-                                    <li>3 cloves Garlic</li>
-                                    <li>2 tbsp Olive Oil</li>
-                                    <li>1 Lemon</li>
-                                    <li>Salt</li>
-                                </ul>
-                            </div>
-
-                            <div class="col-md-7">
-                                <h6 class="text-success">Instructions</h6>
-                                <ol class="small">
-                                    <li>Season chicken with salt and garlic.</li>
-                                    <li>Heat olive oil in a pan.</li>
-                                    <li>Cook chicken until golden.</li>
-                                    <li>Add lemon juice.</li>
-                                    <li>Serve hot.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+          <div class="app-card h-100">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4><span class="section-number">5</span> Recipe</h4>
+              <button class="btn btn-light btn-sm">
+                <i class="fa-solid fa-arrow-left me-2"></i>
+                Back
+              </button>
             </div>
+
+            <div class="row g-4 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="images/chicken.jpg"
+                  class="recipe-detail-img"
+                  alt=""
+                />
+              </div>
+
+              <div class="col-md-7">
+                <h3>Lemon Garlic Chicken</h3>
+
+                <div class="d-flex gap-4 text-muted my-3 flex-wrap">
+                  <span><i class="fa-regular fa-clock me-1"></i>40 mins</span>
+                  <span><i class="fa-solid fa-chart-simple me-1"></i>Easy</span>
+                  <span><i class="fa-solid fa-users me-1"></i>4 servings</span>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-5">
+                    <h6 class="text-success">Ingredients</h6>
+                    <ul class="small">
+                      <li>500 g Chicken Breast</li>
+                      <li>3 cloves Garlic</li>
+                      <li>2 tbsp Olive Oil</li>
+                      <li>1 Lemon</li>
+                      <li>Salt</li>
+                    </ul>
+                  </div>
+
+                  <div class="col-md-7">
+                    <h6 class="text-success">Instructions</h6>
+                    <ol class="small">
+                      <li>Season chicken with salt and garlic.</li>
+                      <li>Heat olive oil in a pan.</li>
+                      <li>Cook chicken until golden.</li>
+                      <li>Add lemon juice.</li>
+                      <li>Serve hot.</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
+      </div>
+    </main>
 
-    </div>
-
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
