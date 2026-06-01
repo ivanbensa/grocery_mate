@@ -1,21 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --body-bg: #f6f7f6;
+    --card-bg: #ffffff;
+    --main-green: #198754;
+    --border-light: #e5e5e5;
+    --border-soft: #eeeeee;
+    --table-head-bg: #f4f5f4;
+    --text-white: #ffffff;
+    --shadow-soft: rgba(0,0,0,0.08);
+}
+
 body{
-    background-color: #f6f7f6;
+    background-color: var(--body-bg);
     font-family: Arial, sans-serif;
 }
 
 .app-card{
-    background-color: #ffffff;
+    background-color: var(--card-bg);
     border-radius: 18px;
     padding: 24px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 25px var(--shadow-soft);
 }
 
 .section-number{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #198754;
-    color: white;
+    background-color: var(--main-green);
+    color: var(--text-white);
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -25,10 +41,10 @@ body{
 
 .recipe-small-card{
     position: relative;
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--border-light);
     border-radius: 14px;
     overflow: hidden;
-    background-color: white;
+    background-color: var(--card-bg);
 }
 
 .recipe-small-card img{
@@ -47,8 +63,8 @@ body{
     right: 10px;
     bottom: 10px;
     border: none;
-    background-color: #198754;
-    color: white;
+    background-color: var(--main-green);
+    color: var(--text-white);
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -60,7 +76,7 @@ body{
     gap: 12px;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .weekly-item img{
@@ -78,20 +94,55 @@ body{
 }
 
 .table th{
-    background-color: #f4f5f4;
+    background-color: var(--table-head-bg);
     font-weight: 600;
 }
 
 .btn-outline-success{
-    border-color: #198754;
-    color: #198754;
+    border-color: var(--main-green);
+    color: var(--main-green);
 }
 
 .btn-outline-success:hover,
 .btn-outline-success.active{
-    background-color: #198754;
-    color: white;
+    background-color: var(--main-green);
+    color: var(--text-white);
 }
+
+.recipes-scroll{
+    max-height: 650px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.recipe-small-card{
+    position: relative;
+}
+
+.small-add-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--main-green);
+    color: var(--text-white);
+
+    font-size: 20px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10;
+}
+
 
 @media(max-width: 768px){
     .weekly-item{
