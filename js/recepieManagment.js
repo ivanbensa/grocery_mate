@@ -65,7 +65,7 @@ function renderRecipes(recipesArray) {
 
             <div class="col-lg-6">
                 <div class="recipe-small-card">
-                <button class="small-add-btn">+</button>
+                <button class="small-add-btn" onclick=addItemToWeeklyPlan(${recipe.id - 1})>+</button>
                     <img src="${recipe.image}" alt="${recipe.name}">
                     <div class="p-3">
                         <h6>${recipe.name}</h6>

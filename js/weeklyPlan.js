@@ -39,12 +39,45 @@ function toPrevDay() {
   renderSelectedDayPlan();
 }
 
-function removeItemFromSelectedDay (category) {
-  let selectedDayRecipes = weeklyPlan.get(selectedDay);
+function removeItemFromSelectedDay(category) {
+  let selectedDayRecipes = weeklyPlan.get(selectedDay.getTime());
   if (!selectedDayRecipes) {
     return;
   }
   delete selectedDayRecipes[category];
+  renderSelectedDayPlan();
+}
+
+function addItemToWeeklyPlan(itemIndex) {
+  const item = recipes[itemIndex];
+  function notifyAlertItemAdded(date, replace = false) {
+    const message = `${item.name} was added to ${date.toLocaleDateString()} - ${daysOfWeek[date.getDay()]}`;
+    alert(message);
+  }
+ 
+  const enumerator = weeklyPlan.keys();
+  let current = enumerator.next();
+  let previous = new Date().getTime();
+  while (!current.done) {
+    const slot = weeklyPlan.get(current.value);
+    if (slot[item.category]) {
+      previous = current.value;
+      current = enumerator.next();
+      continue;
+    } else {
+      slot[item.category] = item;
+      notifyAlertItemAdded(new Date(current.value));
+      renderSelectedDayPlan();
+      return;
+    }
+  }
+  // Slot not found so make one
+  const newSlotDate = new Date(previous);
+  newSlotDate.setDate(newSlotDate.getDate() + 1);
+  weeklyPlan.set(newSlotDate.getTime(), {
+    [item.category]: item,
+  });
+  notifyAlertItemAdded(newSlotDate);
   renderSelectedDayPlan();
 }
 
@@ -77,7 +110,7 @@ function getWeeklyPlanItemHTML(recipeItem) {
           <button class="btn btn-outline-success btn-sm" onclick=openRecipe(recipes[${recipeGlobalIndex - 1}])>
             View Recipe
           </button>
-          <i class="fa-regular fa-trash-can text-danger" 
+          <i class="fa-regular fa-trash-can text-danger cursor-pointer" 
             onclick=removeItemFromSelectedDay('${recipeItem.category}')></i>
       </div>
   `;
@@ -94,8 +127,8 @@ function renderSelectedDayPlan() {
     return;
   }
 
-  containerEl.innerHTML = Object.keys(selectedDayRecipes)
-    .map((key) => getWeeklyPlanItemHTML(selectedDayRecipes[key]))
+  containerEl.innerHTML = ['breakfast', 'lunch', 'dinner']
+    .map((key) => selectedDayRecipes[key] ? getWeeklyPlanItemHTML(selectedDayRecipes[key]) : '')
     .join("");
 }
 
