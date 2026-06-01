@@ -154,3 +154,7 @@ body{
         margin-top: 8px;
     }
 }
+
+.cursor-pointer { 
+    cursor: pointer;
+}

@@ -1,0 +1,104 @@
+/** Date variables */
+const today = new Date();
+let selectedDay = today;
+const daysOfWeek = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+/** Weekly plan logical variables */
+const weeklyPlan = new Map();
+
+/** This is to populate weekly plan on first page open so it's not empty */
+function setRandomDailyPlan() {
+  function randomOf(arr) {
+    return arr[Math.round(Math.random() * (arr.length - 1))];
+  }
+
+  weeklyPlan.set(today.getTime(), {
+    breakfast: randomOf(
+      recipes.filter((recipe) => recipe.category === "breakfast"),
+    ),
+    lunch: randomOf(recipes.filter((recipe) => recipe.category === "lunch")),
+    dinner: randomOf(recipes.filter((recipe) => recipe.category === "dinner")),
+  });
+}
+
+function toNextDay() {
+  selectedDay.setDate(selectedDay.getDate() + 1);
+  renderSelectedDayPlan();
+}
+
+function toPrevDay() {
+  selectedDay.setDate(selectedDay.getDate() - 1);
+  renderSelectedDayPlan();
+}
+
+function removeItemFromSelectedDay (category) {
+  let selectedDayRecipes = weeklyPlan.get(selectedDay);
+  if (!selectedDayRecipes) {
+    return;
+  }
+  delete selectedDayRecipes[category];
+  renderSelectedDayPlan();
+}
+
+function getWeeklyPlanItemHTML(recipeItem) {
+  function getIconEl() {
+    switch (recipeItem.category) {
+      case "breakfast":
+        return `<i class="fa-solid fa-b text-success" title="Breakfast"></i>`;
+      case "lunch":
+        return `<i class="fa-solid fa-l text-success" title="Lunch"></i>`;
+      case "dinner":
+        return `<i class="fa-solid fa-d text-success" title="Dinner"></i>`;
+      default:
+        return "";
+    }
+  }
+
+  /** This is needed to use openRecipe function */
+  const recipeGlobalIndex = recipes.findIndex(
+    (recipe) => recipe.id === recipeItem.id,
+  );
+
+  return `
+      <div class="weekly-item">
+          ${getIconEl()}
+          <img src="${recipeItem.image}"
+            onerror="this.onerror=null; this.src='images/recipe-placeholder.png';"
+            alt="Recipe Image" />
+          <span>${recipeItem.name}</span>
+          <button class="btn btn-outline-success btn-sm" onclick=openRecipe(recipes[${recipeGlobalIndex - 1}])>
+            View Recipe
+          </button>
+          <i class="fa-regular fa-trash-can text-danger" 
+            onclick=removeItemFromSelectedDay('${recipeItem.category}')></i>
+      </div>
+  `;
+}
+
+/** Renders selected day plan. If nothing is in the plan it will render empty block */
+function renderSelectedDayPlan() {
+  const labelEl = document.getElementById("selectedDayLabel");
+  labelEl.innerText = `${selectedDay.toLocaleDateString()} - ${daysOfWeek[selectedDay.getDay()]}`;
+  let selectedDayRecipes = weeklyPlan.get(selectedDay.getTime());
+  const containerEl = document.getElementById("weeklyItemsContainer");
+  if (!selectedDayRecipes) {
+    containerEl.innerHTML = "";
+    return;
+  }
+
+  containerEl.innerHTML = Object.keys(selectedDayRecipes)
+    .map((key) => getWeeklyPlanItemHTML(selectedDayRecipes[key]))
+    .join("");
+}
+
+/** Once script is loaded set random weekly plan and render it */
+setRandomDailyPlan();
+renderSelectedDayPlan();

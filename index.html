@@ -70,39 +70,17 @@
                 <h4><span class="section-number">2</span> Weekly Plan</h4>
 
                 <div class="d-flex justify-content-between align-items-center my-4">
-                    <i class="fa-solid fa-chevron-left"></i>
-                    <strong>May 20 - May 26</strong>
-                    <i class="fa-solid fa-chevron-right"></i>
+                    <i class="fa-solid fa-chevron-left cursor-pointer" onclick="toPrevDay()"></i>
+                    <strong id="selectedDayLabel"></strong>
+                    <i class="fa-solid fa-chevron-right cursor-pointer" onclick="toNextDay()"></i>
                 </div>
+                
+                <div id="weeklyItemsContainer"></div>
 
-                <div class="weekly-item">
-                    <strong>Mon</strong>
-                    <img src="images/chicken.jpg" alt="">
-                    <span>Lemon Garlic Chicken</span>
-                    <button class="btn btn-outline-success btn-sm">View Recipe</button>
-                    <i class="fa-regular fa-trash-can text-danger"></i>
-                </div>
-
-                <div class="weekly-item">
-                    <strong>Tue</strong>
-                    <img src="images/salad.jpg" alt="">
-                    <span>Veggie Stir Fry</span>
-                    <button class="btn btn-outline-success btn-sm">View Recipe</button>
-                    <i class="fa-regular fa-trash-can text-danger"></i>
-                </div>
-
-                <div class="weekly-item">
-                    <strong>Wed</strong>
-                    <img src="images/pasta.jpg" alt="">
-                    <span>Pasta Primavera</span>
-                    <button class="btn btn-outline-success btn-sm">View Recipe</button>
-                    <i class="fa-regular fa-trash-can text-danger"></i>
-                </div>
-
-                <button class="btn btn-outline-success w-100 mt-4">
+                <a href="#recipeManagementHeader" class="btn btn-outline-success w-100 mt-4">
                     <i class="fa-solid fa-plus me-2"></i>
                     Add Menu
-                </button>
+                </a>
             </div>
         </section>
 
@@ -229,7 +207,7 @@
 
             <div class="app-card">
 
-                <h3 class="mb-4">
+                <h3 class="mb-4" id="recipeManagementHeader">
                     <span class="section-number">4</span>
                     Recipe Management
                 </h3>
@@ -360,6 +338,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/recipes.js"></script>
 <script src="js/recepieManagment.js"></script>
+<script src="js/weeklyPlan.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
