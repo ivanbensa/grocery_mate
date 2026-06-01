@@ -1,45 +1,45 @@
-// GET ELEMENTS
-
+////////////////////        RECIPE SEARCH       ////////////////////////////////
+// GET ELEMENTS FROM RECIPE SEARCH
 const searchRecipeInput = document.getElementById("searchRecipeInput");
 const countrySelect = document.getElementById("countrySelect");
 const categorySelect = document.getElementById("categorySelect");
 
-// END OF GET ELEMENTS
-
-// EVENTS
-
-searchRecipeInput.addEventListener("input", filterRecipes);
-countrySelect.addEventListener("change", filterRecipes);
+// RECIPE SEARCH EVENTS
+searchRecipeInput.addEventListener("input", filterRecipes); // Listen to the input field. Whenever the user types something, run filterRecipes()
+countrySelect.addEventListener("change", filterRecipes);    // Listen to the country select field. Whenever the user changes the selected option, run filterRecipes()
 categorySelect.addEventListener("change", filterRecipes);
 
-// FILTER FUNCTION
-
+// SEARCH AND FILTER RECIPES
 function filterRecipes() {
-    const searchRecipeValue = searchRecipeInput.value.toLowerCase();
-    const selectedCountry = countrySelect.value;
-    const selectedCategory = categorySelect.value;
+    const searchRecipeValue = searchRecipeInput.value.toLowerCase();    // Get input value and convert it to lowercase for case-insensitive search
+    const selectedCountry = countrySelect.value;                        // Get the selected country
+    const selectedCategory = categorySelect.value;                      // Get the selected category
 
-    let filteredRecipes = [];
+    let filteredRecipes = [];   // Store matching recipes
 
     for (let i = 0; i < recipes.length; i++) {
 
-        const recipe = recipes[i];
+        const recipe = recipes[i];  // Get current recipe
 
-        const matchesSearch = recipe.name.toLowerCase().includes(searchRecipeValue);
-        const matchesCountry = selectedCountry === "all" || recipe.country === selectedCountry;
-        const matchesCategory = selectedCategory === "all" || recipe.category === selectedCategory;
+        const matchesSearch = recipe.name.toLowerCase().includes(searchRecipeValue);                    // Check if recipe matches search text
+        const matchesCountry = selectedCountry === "all" || recipe.country === selectedCountry;         // Match selected country or show all countries
+        const matchesCategory = selectedCategory === "all" || recipe.category === selectedCategory;     // Match selected category or show all categories
 
         if (matchesSearch && matchesCountry && matchesCategory) {
-            filteredRecipes.push(recipe);
+            filteredRecipes.push(recipe);   // Add recipe to filtered recipes
         }
     }
 
-    renderRecipes(filteredRecipes);
+    renderRecipes(filteredRecipes);     // Show filtered recipes on the page
 }
+////////////////////        ENO OF RECIPE SEARCH       ////////////////////////////////
+
+////////////////////        RECIPE      ////////////////////////////////
 
 // GET RECIPES CONTAINER
-
 const recipesContainer = document.getElementById("recipesContainer");
+
+
 
 
 // RENDER RECIPES
