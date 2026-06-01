@@ -16,7 +16,7 @@
 
     <div class="row g-4">
 
-        <!-- MENU LIBRARY -->
+        <!-- MENU LIBRARY
         <section class="col-lg-4">
             <div class="app-card h-100">
                 <h4><span class="section-number">1</span> Menu Library</h4>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </section>
-
+-->
         <!-- WEEKLY PLAN -->
         <section class="col-lg-4">
             <div class="app-card h-100">
@@ -111,15 +111,14 @@
             <div class="app-card h-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4><span class="section-number">3</span> Inventory</h4>
-                    <button class="btn btn-outline-danger btn-sm" id="invClearBtn">Clear All</button>
+                    <button class="btn btn-outline-danger btn-sm">Clear All</button>
                 </div>
 
-                <button class="btn btn-outline-success my-4" id="invAddBtn">
+                <button class="btn btn-outline-success my-4">
                     <i class="fa-solid fa-plus me-2"></i>
                     Add Item
                 </button>
 
-                <div id="invFormContainer"></div> 
                 <table class="table align-middle">
                     <thead>
                     <tr>
@@ -129,7 +128,7 @@
                     </tr>
                     </thead>
 
-                    <tbody id="invTableBody">
+                    <tbody>
                     <tr>
                         <td>Rice</td>
                         <td>2 cups</td>
@@ -171,7 +170,7 @@
         </section>
 
         <!-- SHOPPING LIST -->
-        <section class="col-lg-5">
+        <section class="col-lg-4">
             <div class="app-card h-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4><span class="section-number">4</span> Shopping List</h4>
@@ -224,64 +223,143 @@
             </div>
         </section>
 
-        <!-- RECIPE DETAILS -->
-        <section class="col-lg-7">
-            <div class="app-card h-100">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h4><span class="section-number">5</span> Recipe</h4>
-                    <button class="btn btn-light btn-sm">
-                        <i class="fa-solid fa-arrow-left me-2"></i>
-                        Back
-                    </button>
-                </div>
+        <!--    RECIPE MANAGEMENT   -->
 
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-5">
-                        <img src="images/chicken.jpg" class="recipe-detail-img" alt="">
+        <section class="col-12">
+
+            <div class="app-card">
+
+                <h3 class="mb-4">
+                    <span class="section-number">4</span>
+                    Recipe Management
+                </h3>
+
+                <div class="row g-4">
+
+                    <!--    RECIPE SEARCH  -->
+
+                    <div class="col-lg-3 border-end">
+                        <h4 class="mb-4">Recipe Search</h4>
+
+                        <label class="form-label">Search</label>
+                        <input type="text" class="form-control mb-3" id="searchRecipeInput"
+                               placeholder="Search recipe...">
+
+                        <label class="form-label">Country</label>
+                        <select class="form-select mb-3" id="countrySelect">
+                            <option value="all">🌍 All Countries</option>
+                            <option value="Serbia">🇷🇸 Serbia</option>
+                            <option value="Ukraine">🇺🇦 Ukraine</option>
+                            <option value="Russia">🇷🇺 Russia</option>
+                            <option value="Lebanon">🇱🇧 Lebanon</option>
+                            <option value="India">🇮🇳 India</option>
+                        </select>
+
+                        <label class="form-label">Category</label>
+                        <select class="form-select mb-3" id="categorySelect">
+                            <option value="all">🍽️ All Categories</option>
+                            <option value="breakfast">🍳 Breakfast</option>
+                            <option value="lunch">🍗 Lunch</option>
+                            <option value="dinner">🍲 Dinner</option>
+                        </select>
                     </div>
 
-                    <div class="col-md-7">
-                        <h3>Lemon Garlic Chicken</h3>
+                    <!--   END OF RECIPE SEARCH  -->
 
-                        <div class="d-flex gap-4 text-muted my-3 flex-wrap">
-                            <span><i class="fa-regular fa-clock me-1"></i>40 mins</span>
-                            <span><i class="fa-solid fa-chart-simple me-1"></i>Easy</span>
-                            <span><i class="fa-solid fa-users me-1"></i>4 servings</span>
-                        </div>
+                    <!--    RECIPES    -->
 
-                        <div class="row mt-4">
-                            <div class="col-md-5">
-                                <h6 class="text-success">Ingredients</h6>
-                                <ul class="small">
-                                    <li>500 g Chicken Breast</li>
-                                    <li>3 cloves Garlic</li>
-                                    <li>2 tbsp Olive Oil</li>
-                                    <li>1 Lemon</li>
-                                    <li>Salt</li>
-                                </ul>
-                            </div>
+                    <div class="col-lg-5 border-end">
+                        <h4 class="mb-4">Recipes</h4>
 
-                            <div class="col-md-7">
-                                <h6 class="text-success">Instructions</h6>
-                                <ol class="small">
-                                    <li>Season chicken with salt and garlic.</li>
-                                    <li>Heat olive oil in a pan.</li>
-                                    <li>Cook chicken until golden.</li>
-                                    <li>Add lemon juice.</li>
-                                    <li>Serve hot.</li>
-                                </ol>
-                            </div>
+                        <div class="row g-3 recipes-scroll" id="recipesContainer">
+                            <!-- JS recipes here -->
                         </div>
                     </div>
-                </div>
 
+                    <!--    END OF RECIPES  -->
+
+                    <!--    ADD RECIPE    -->
+
+                    <div class="col-lg-4">
+                        <h4 class="mb-4">Add Recipe</h4>
+
+                        <input type="text" class="form-control mb-3" id="newRecipeName" placeholder="Recipe name">
+
+                        <select class="form-select mb-3" id="newRecipeCountry">
+                            <option value="Serbia">Serbia</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="Russia">Russia</option>
+                            <option value="Lebanon">Lebanon</option>
+                            <option value="India">India</option>
+                        </select>
+
+                        <select class="form-select mb-3" id="newRecipeCategory">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+
+                        <input type="text" class="form-control mb-3" id="newRecipeImage"
+                               placeholder="Image path: images/sarma.jpg">
+
+                        <h6>Ingredients</h6>
+
+                        <input type="text" class="form-control mb-2" id="ingredientName" placeholder="Ingredient name">
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <input type="number" class="form-control" id="ingredientQuantity"
+                                       placeholder="Quantity">
+                            </div>
+
+                            <div class="col-6">
+                                <select class="form-select" id="ingredientUnit">
+                                    <option value="g">g</option>
+                                    <option value="ml">ml</option>
+                                    <option value="piece">piece</option>
+                                    <option value="tbsp">tbsp</option>
+                                    <option value="tsp">tsp</option>
+                                    <option value="slice">slice</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-outline-success w-100 mb-3" id="addIngredientBtn">
+                            Add Ingredient
+                        </button>
+
+                        <ul class="small" id="ingredientsPreview"></ul>
+
+                        <textarea class="form-control mb-3" id="newRecipeInstructions" rows="5"
+                                  placeholder="Write instructions. One step per line."></textarea>
+
+                        <button class="btn btn-success w-100" id="saveRecipeBtn">
+                            Save Recipe
+                        </button>
+                    </div>
+
+                    <!--   END OF ADD RECIPE    -->
+
+                </div>
             </div>
         </section>
 
-    </div>
+        <!-- RECIPE MODAL -->
+        <div class="modal fade" id="recipeModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content" id="recipeModalContent">
+                    <!-- JS modal content -->
+                </div>
+            </div>
+        </div>
 
+        <!--   END OF RECIPE MANAGEMENT   -->
+    </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/recipes.js"></script>
+<script src="js/recepieManagment.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
