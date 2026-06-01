@@ -103,7 +103,7 @@ function openRecipe(recipe) {
         </div>
 
         <div class="modal-body">
-            <imgsrc="${recipe.image}"class="img-fluid rounded mb-4">
+            <img src="${recipe.image}"class="img-fluid rounded mb-4">
             <p>🌍 ${recipe.country}</p>
             <p>🍽️ ${recipe.category}</p>
             <h5>Ingredients</h5>
