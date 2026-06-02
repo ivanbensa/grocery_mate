@@ -89,13 +89,15 @@
             <div class="app-card h-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4><span class="section-number">3</span> Inventory</h4>
-                    <button class="btn btn-outline-danger btn-sm">Clear All</button>
+                    <button class="btn btn-outline-danger btn-sm" id="invClearBtn">Clear All</button>
                 </div>
 
-                <button class="btn btn-outline-success my-4">
+                <button class="btn btn-outline-success my-4" id="invAddBtn">
                     <i class="fa-solid fa-plus me-2"></i>
                     Add Item
                 </button>
+
+                <div id="invFormContainer"></div>
 
                 <table class="table align-middle">
                     <thead>
@@ -106,10 +108,10 @@
                     </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="invTableBody">
                     <tr>
-                        <td>Rice</td>
-                        <td>2 cups</td>
+                        <td></td>
+                        <td></td>
                         <td class="text-end">
                             <i class="fa-solid fa-pen me-3"></i>
                             <i class="fa-regular fa-trash-can text-danger"></i>
@@ -117,8 +119,8 @@
                     </tr>
 
                     <tr>
-                        <td>Pasta</td>
-                        <td>1 cup</td>
+                        <td></td>
+                        <td></td>
                         <td class="text-end">
                             <i class="fa-solid fa-pen me-3"></i>
                             <i class="fa-regular fa-trash-can text-danger"></i>
@@ -126,8 +128,8 @@
                     </tr>
 
                     <tr>
-                        <td>Olive Oil</td>
-                        <td>500 ml</td>
+                        <td></td>
+                        <td></td>
                         <td class="text-end">
                             <i class="fa-solid fa-pen me-3"></i>
                             <i class="fa-regular fa-trash-can text-danger"></i>
@@ -135,8 +137,8 @@
                     </tr>
 
                     <tr>
-                        <td>Garlic</td>
-                        <td>3 bulbs</td>
+                        <td></td>
+                        <td></td>
                         <td class="text-end">
                             <i class="fa-solid fa-pen me-3"></i>
                             <i class="fa-regular fa-trash-can text-danger"></i>
