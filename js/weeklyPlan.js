@@ -54,7 +54,7 @@ function addItemToWeeklyPlan(itemIndex) {
     const message = `${item.name} was added to ${date.toLocaleDateString()} - ${daysOfWeek[date.getDay()]}`;
     alert(message);
   }
- 
+
   const enumerator = weeklyPlan.keys();
   let current = enumerator.next();
   let previous = new Date().getTime();
@@ -85,11 +85,11 @@ function getWeeklyPlanItemHTML(recipeItem) {
   function getIconEl() {
     switch (recipeItem.category) {
       case "breakfast":
-        return `<i class="fa-solid fa-b text-success" title="Breakfast"></i>`;
+        return `<i class="fa-solid fa-alarm-clock text-success" title="Breakfast"></i>`;
       case "lunch":
-        return `<i class="fa-solid fa-l text-success" title="Lunch"></i>`;
+        return `<i class="fa-solid fa-sun text-success" title="Lunch"></i>`;
       case "dinner":
-        return `<i class="fa-solid fa-d text-success" title="Dinner"></i>`;
+        return `<i class="fa-solid fa-moon text-success" title="Dinner"></i>`;
       default:
         return "";
     }
@@ -127,9 +127,45 @@ function renderSelectedDayPlan() {
     return;
   }
 
-  containerEl.innerHTML = ['breakfast', 'lunch', 'dinner']
-    .map((key) => selectedDayRecipes[key] ? getWeeklyPlanItemHTML(selectedDayRecipes[key]) : '')
+  containerEl.innerHTML = ["breakfast", "lunch", "dinner"]
+    .map((key) =>
+      selectedDayRecipes[key]
+        ? getWeeklyPlanItemHTML(selectedDayRecipes[key])
+        : "",
+    )
     .join("");
+}
+
+/** Calculates all ingredients for currently selected day. Accumulates same ingredients quantity. */
+function getSelectedDayGroupedIngredients() {
+  let selectedDayRecipes = weeklyPlan.get(selectedDay.getTime());
+  let ingredients = ["breakfast", "lunch", "dinner"].flatMap((key) =>
+    selectedDayRecipes[key] ? selectedDayRecipes[key].ingredients : [],
+  );
+
+  return ingredients.reduce((acc, curr) => {
+    const idx = acc.findIndex((rec) => rec.name === curr.name);
+    if (idx === -1) {
+      acc.push({ ...curr });
+    } else {
+      acc[idx].quantity += curr.quantity;
+    }
+
+    return acc;
+  }, []);
+}
+
+/** TEMPORARY: example on how to get selected day grouped ingredients. */
+function showSelectedDayGroupedIngredients() {
+  const ingredients = getSelectedDayGroupedIngredients();
+  console.log(ingredients);
+
+  const message = ingredients.map(
+    (ing) => `${ing.name}: ${ing.quantity}${ing.unit}`,
+  ).join('\n');
+
+  const selectedDayLabel = `${selectedDay.toLocaleDateString()} - ${daysOfWeek[selectedDay.getDay()]}`;
+  alert(`Ingredients for ${selectedDayLabel}\n\n${message}`);
 }
 
 /** Once script is loaded set random weekly plan and render it */
