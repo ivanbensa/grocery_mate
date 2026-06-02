@@ -107,7 +107,7 @@ function getWeeklyPlanItemHTML(recipeItem) {
             onerror="this.onerror=null; this.src='images/recipe-placeholder.png';"
             alt="Recipe Image" />
           <span>${recipeItem.name}</span>
-          <button class="btn btn-outline-success btn-sm" onclick=openRecipe(recipes[${recipeGlobalIndex - 1}])>
+          <button class="btn btn-outline-success btn-sm" onclick=openRecipe(recipes[${recipeGlobalIndex}])>
             View Recipe
           </button>
           <i class="fa-regular fa-trash-can text-danger cursor-pointer" 
