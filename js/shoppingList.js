@@ -143,11 +143,11 @@ addToShoppingListBtn.addEventListener("click", function (e) {
     e.preventDefault();
 });
 
-/*clearBtn.addEventListener("click", function () 
+clearBtn.addEventListener("click", function () 
 {
    shoppingItems = [];
    displayShoppingTable(); 
-});*/
+});
 
 function deleteItem(index)
 {
