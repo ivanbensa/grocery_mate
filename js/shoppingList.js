@@ -1,4 +1,4 @@
-let shoppingItems = [["carrot",2], ["beetroot",3]];
+let shoppingItems = [];
 let tableBody = document.getElementById("shoppingTableBody");
 let toInventoryBtn = document.getElementById("ShoppingDoneBtn");
 let addToShoppingListBtn = document.getElementById("addToShoppingListBtn");
