@@ -172,40 +172,88 @@ body{
     text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
+.weekly-item .btn {
+    white-space: nowrap;
+}
+
+.weekly-item{
+    display: grid;
+    grid-template-columns: 45px 110px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.weekly-item img{
+    width: 110px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.weekly-info h6{
+    margin: 0 0 10px 0;
+    font-size: 22px;
+}
+
+.weekly-actions{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.weekly-actions .btn{
+    width: 44px;
+    height: 36px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 @keyframes float {
-
     0%,100%{
-
         transform: translateY(0);
-
     }
-
     50%{
-
         transform: translateY(-8px);
-
     }
-
 }
 
 .empty-recipes i{
-
     animation: float 2s ease-in-out infinite;
-
 }
 
 
 @media(max-width: 768px){
     .weekly-item{
-        grid-template-columns: 35px 60px 1fr;
+        grid-template-columns: 28px 90px 1fr;
+        gap: 10px;
     }
 
-    .weekly-item button,
-    .weekly-item i{
-        margin-top: 8px;
+    .weekly-item img{
+        width: 90px;
+        height: 58px;
+    }
+
+    .weekly-info h6{
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .weekly-actions{
+        gap: 10px;
+    }
+
+    .weekly-actions .btn{
+        width: 36px;
+        height: 32px;
+        padding: 4px;
+    }
+
+    .weekly-actions i{
+        margin-top: 0;
     }
 }
 
-.cursor-pointer { 
-    cursor: pointer;
-}

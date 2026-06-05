@@ -46,7 +46,7 @@ function renderRecipes(recipesArray) {  // Render all recipes from the array int
     recipesContainer.innerHTML = "";    // Remove all recipes before rendering new ones
 
     if (recipesArray.length === 0) {    // If the array is empty
-        recipesContainer.innerHTML = `    // Display message when no recipes are found
+        recipesContainer.innerHTML = `    <!-- Display message when no recipes are found -->
             <div class="text-center py-5 empty-recipes">
                 <i class="fa-solid fa-utensils fs-1 text-muted"></i>
                 <h5 class="mt-3">Choose your recipes 🍽️</h5>
@@ -58,7 +58,7 @@ function renderRecipes(recipesArray) {  // Render all recipes from the array int
 
     for (let i = 0; i < recipesArray.length; i++) {
         const recipe = recipesArray[i];     // Get current recipe from the array
-        recipesContainer.innerHTML += `    // Append recipe card to the page
+        recipesContainer.innerHTML += `    <!-- Append recipe card to the page     -->
 
             <div class="col-lg-6">
                 <div class="recipe-small-card">
@@ -69,7 +69,7 @@ function renderRecipes(recipesArray) {  // Render all recipes from the array int
 
                         <small class="text-muted">${recipe.country} • ${recipe.category}</small>
                         <br>
-                        <button class="btn btn-success btn-sm mt-3" onclick="openRecipe(recipes[${recipe.id - 1}])">View Recipe</button>   // Open selected recipe
+                        <button class="btn btn-success btn-sm mt-3" onclick="openRecipe(recipes[${recipe.id - 1}])">View Recipe</button>   <!-- Open selected recipe   -->
                     </div>
                 </div>
             </div> `;
@@ -83,7 +83,7 @@ const recipeModalContent = document.getElementById("recipeModalContent");   // G
 
 function openRecipe(recipe) {   // Open selected recipe in the modal
 
-    recipeModalContent.innerHTML = `    // Display selected recipe in the modal
+    recipeModalContent.innerHTML = `    <!-- Display selected recipe in the modal  -->
 
         <div class="modal-header">
             <h4>${recipe.name}</h4>

@@ -99,7 +99,7 @@ function getWeeklyPlanItemHTML(recipeItem) {
   const recipeGlobalIndex = recipes.findIndex(
     (recipe) => recipe.id === recipeItem.id,
   );
-
+/*
   return `
       <div class="weekly-item">
           ${getIconEl()}
@@ -114,6 +114,35 @@ function getWeeklyPlanItemHTML(recipeItem) {
             onclick=removeItemFromSelectedDay('${recipeItem.category}')></i>
       </div>
   `;
+ */
+
+  return `
+    <div class="weekly-item">
+        <div class="weekly-icon">
+            ${getIconEl()}
+        </div>
+        <img
+            src="${recipeItem.image}"
+            onerror="this.onerror=null; this.src='images/recipe-placeholder.png';"
+            alt="Recipe Image"
+        />
+        <div class="weekly-info">
+            <h6>${recipeItem.name}</h6>
+            <div class="weekly-actions">
+                <button
+                    class="btn btn-outline-success btn-sm"
+                    onclick="openRecipe(recipes[${recipeGlobalIndex}])"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+                <i
+                    class="fa-regular fa-trash-can text-danger cursor-pointer"
+                    onclick="removeItemFromSelectedDay('${recipeItem.category}')"
+                ></i>
+            </div>
+        </div>
+    </div>
+`;
 }
 
 /** Renders selected day plan. If nothing is in the plan it will render empty block */
