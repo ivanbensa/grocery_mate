@@ -99,22 +99,6 @@ function getWeeklyPlanItemHTML(recipeItem) {
   const recipeGlobalIndex = recipes.findIndex(
     (recipe) => recipe.id === recipeItem.id,
   );
-/*
-  return `
-      <div class="weekly-item">
-          ${getIconEl()}
-          <img src="${recipeItem.image}"
-            onerror="this.onerror=null; this.src='images/recipe-placeholder.png';"
-            alt="Recipe Image" />
-          <span>${recipeItem.name}</span>
-          <button class="btn btn-outline-success btn-sm" onclick=openRecipe(recipes[${recipeGlobalIndex}])>
-            View Recipe
-          </button>
-          <i class="fa-regular fa-trash-can text-danger cursor-pointer" 
-            onclick=removeItemFromSelectedDay('${recipeItem.category}')></i>
-      </div>
-  `;
- */
 
   return `
     <div class="weekly-item">
