@@ -30,22 +30,22 @@ class Inventory {
     }
 
     showForm() {
-    const container = document.getElementById('invFormContainer');
-    container.innerHTML = `
-        <div class="mb-3">
-            <input type="text" id="invName" class="form-control mb-2" placeholder="Item name">
-            <input type="text" id="invQuantity" class="form-control mb-2" placeholder="Quantity (e.g. 2 cups)">
-            <button class="btn btn-success btn-sm me-2" onclick="inventory.confirmAdd()">Save</button>
-            <button class="btn btn-outline-secondary btn-sm" onclick="inventory.hideForm()">Cancel</button>
-        </div>
-    `;
- }
+        const container = document.getElementById('invFormContainer');
+        container.innerHTML = `
+            <div class="mb-3">
+                <input type="text" id="invName" class="form-control mb-2" placeholder="Item name">
+                <input type="text" id="invQuantity" class="form-control mb-2" placeholder="Quantity (e.g. 2 cups)">
+                <button class="btn btn-success btn-sm me-2" onclick="inventory.confirmAdd()">Save</button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="inventory.hideForm()">Cancel</button>
+            </div>
+        `;
+    }
 
     hideForm() {
         document.getElementById('invFormContainer').innerHTML = '';
     }
 
-        addItem(name, quantity) {
+    addItem(name, quantity) {
         if (name.trim() === '') {
             alert('Please enter an item name.');
             return;
@@ -61,17 +61,61 @@ class Inventory {
     }
 
     confirmAdd() {
-    const name     = document.getElementById('invName').value;
-    const quantity = document.getElementById('invQuantity').value;
-    inventory.addItem(name, quantity);
-    this.hideForm();
-       
- }
- removeItem(id) {
-    this.items = this.items.filter(item => item.id !== id);
-    this.renderTable();
-}
-        
+        const name     = document.getElementById('invName').value;
+        const quantity = document.getElementById('invQuantity').value;
+        inventory.addItem(name, quantity);
+        this.hideForm();
+    }
+
+    removeItem(id) {
+        this.items = this.items.filter(item => item.id !== id);
+        this.renderTable();
+    }
+
+    editItem(id) {
+        const item = this.items.find(item => item.id === id);
+        if (!item) return;
+
+        const container = document.getElementById('invFormContainer');
+        container.innerHTML = `
+            <div class="mb-3">
+                <input type="text" id="invName" class="form-control mb-2" value="${item.name}">
+                <input type="text" id="invQuantity" class="form-control mb-2" value="${item.quantity}">
+                <button class="btn btn-success btn-sm me-2" onclick="inventory.confirmEdit(${item.id})">Save</button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="inventory.hideForm()">Cancel</button>
+            </div>
+        `;
+    }
+
+    confirmEdit(id) {
+        const item = this.items.find(item => item.id === id);
+        if (!item) return;
+
+        const name     = document.getElementById('invName').value;
+        const quantity = document.getElementById('invQuantity').value;
+
+        if (name.trim() === '') {
+            alert('Please enter an item name.');
+            return;
+        }
+        if (quantity.trim() === '') {
+            alert('Please enter a quantity.');
+            return;
+        }
+
+        item.name     = name;
+        item.quantity = quantity;
+
+        this.hideForm();
+        this.renderTable();
+    }
+
+    clearAll() {
+        if (confirm('Are you sure you want to clear all items?')) {
+            this.items = [];
+            this.renderTable();
+        }
+    }
 }
 
 const inventory = new Inventory();
@@ -80,3 +124,6 @@ document.getElementById('invAddBtn').addEventListener('click', () => {
     inventory.showForm();
 });
 
+document.getElementById('invClearBtn').addEventListener('click', () => {
+    inventory.clearAll();
+});
