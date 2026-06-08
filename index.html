@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GroceryBuddy</title>
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <title>Sous Chef</title>
 </head>
 
 <body>
@@ -24,58 +25,10 @@
 
     <div class="row g-4">
 
-        <!-- MENU LIBRARY
-        <section class="col-lg-4">
-            <div class="app-card h-100">
-                <h4><span class="section-number">1</span> Menu Library</h4>
-
-                <div class="input-group my-4">
-                    <span class="input-group-text bg-white">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Search recipes...">
-                </div>
-
-                <div class="d-flex gap-2 mb-4 flex-wrap">
-                    <button class="btn btn-outline-success active">All</button>
-                    <button class="btn btn-light">Breakfast</button>
-                    <button class="btn btn-light">Lunch</button>
-                    <button class="btn btn-light">Dinner</button>
-                    <button class="btn btn-light">Snacks</button>
-                </div>
-
-                <div class="row g-3">
-                    <div class="col-6">
-                        <div class="recipe-small-card">
-                            <img src="images/chicken.jpg" alt="">
-                            <h6>Lemon Garlic Chicken</h6>
-                            <button class="small-add-btn">+</button>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="recipe-small-card">
-                            <img src="images/salad.jpg" alt="">
-                            <h6>Veggie Stir Fry</h6>
-                            <button class="small-add-btn">+</button>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="recipe-small-card">
-                            <img src="images/pasta.jpg" alt="">
-                            <h6>Pasta Primavera</h6>
-                            <button class="small-add-btn">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
--->
         <!-- WEEKLY PLAN -->
         <section class="col-lg-4">
             <div class="app-card h-100">
-                <h4><span class="section-number">2</span> Weekly Plan</h4>
+                <h4><span class="section-number">1</span> Daily Plate</h4>
 
                 <div class="d-flex justify-content-between align-items-center my-4">
                     <i class="fa-solid fa-chevron-left cursor-pointer" onclick="toPrevDay()"></i>
@@ -92,11 +45,212 @@
             </div>
         </section>
 
+
+
+        <!-- RECIPE MANAGEMENT -->
+
+        <section class="col-8">
+
+            <div class="app-card">
+
+                <h3 class="mb-4" id="recipeManagementHeader">
+                    <span class="section-number">2</span>
+                    CookBook
+                </h3>
+
+                <div class="row g-4">
+
+                    <!-- LEFT SIDE: SEARCH + RECIPES -->
+                    <div class="col-lg-8">
+
+                        <!-- RECIPE SEARCH -->
+                        <div class="mb-4 border-bottom pb-4">
+
+                            <h4 class="mb-4">Recipe Search</h4>
+
+                            <div class="row g-3">
+
+                                <div class="col-md-4">
+
+                                    <label class="form-label">Search</label>
+
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            id="searchRecipeInput"
+                                            placeholder="Search recipe..."
+                                    >
+
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    <label class="form-label">Country</label>
+
+                                    <select class="form-select" id="countrySelect">
+                                        <option value="all">🌍 All Countries</option>
+                                        <option value="Serbia">🇷🇸 Serbia</option>
+                                        <option value="Ukraine">🇺🇦 Ukraine</option>
+                                        <option value="Russia">🇷🇺 Russia</option>
+                                        <option value="Lebanon">🇱🇧 Lebanon</option>
+                                        <option value="India">🇮🇳 India</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    <label class="form-label">Category</label>
+
+                                    <select class="form-select" id="categorySelect">
+                                        <option value="all">🍽️ All Categories</option>
+                                        <option value="breakfast">🍳 Breakfast</option>
+                                        <option value="lunch">🍗 Lunch</option>
+                                        <option value="dinner">Dinner</option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- END OF RECIPE SEARCH -->
+
+
+                        <!-- RECIPES -->
+                        <div>
+
+                            <h4 class="mb-4">Recipes</h4>
+
+                            <div class="row g-3 recipes-scroll" id="recipesContainer">
+                                <!-- JS recipes here -->
+                            </div>
+
+                        </div>
+                        <!-- END OF RECIPES -->
+
+                    </div>
+                    <!-- END OF LEFT SIDE -->
+
+
+                    <!-- RIGHT SIDE: ADD RECIPE -->
+                    <div class="col-lg-4">
+
+                        <h4 class="mb-4">Add Recipe</h4>
+
+                        <input
+                                type="text"
+                                class="form-control mb-3"
+                                id="newRecipeName"
+                                placeholder="Recipe name"
+                        >
+
+                        <select class="form-select mb-3" id="newRecipeCountry">
+                            <option value="Serbia">Serbia</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="Russia">Russia</option>
+                            <option value="Lebanon">Lebanon</option>
+                            <option value="India">India</option>
+                        </select>
+
+                        <select class="form-select mb-3" id="newRecipeCategory">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+
+                        <input
+                                type="text"
+                                class="form-control mb-3"
+                                id="newRecipeImage"
+                                placeholder="Image path: images/sarma.jpg"
+                        >
+
+                        <h6>Ingredients</h6>
+
+                        <input
+                                type="text"
+                                class="form-control mb-2"
+                                id="ingredientName"
+                                placeholder="Ingredient name"
+                        >
+
+                        <div class="row g-2 mb-3">
+
+                            <div class="col-6">
+                                <input
+                                        type="number"
+                                        class="form-control"
+                                        id="ingredientQuantity"
+                                        placeholder="Quantity"
+                                >
+                            </div>
+
+                            <div class="col-6">
+                                <select class="form-select" id="ingredientUnit">
+                                    <option value="g">g</option>
+                                    <option value="ml">ml</option>
+                                    <option value="piece">piece</option>
+                                    <option value="tbsp">tbsp</option>
+                                    <option value="tsp">tsp</option>
+                                    <option value="slice">slice</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <button
+                                class="btn btn-outline-success w-100 mb-3"
+                                id="addIngredientBtn"
+                        >
+                            Add Ingredient
+                        </button>
+
+                        <ul class="small" id="ingredientsPreview"></ul>
+
+                        <textarea
+                                class="form-control mb-3"
+                                id="newRecipeInstructions"
+                                rows="5"
+                                placeholder="Write instructions. One step per line."
+                        ></textarea>
+
+                        <button
+                                class="btn btn-success w-100"
+                                id="saveRecipeBtn"
+                        >
+                            Save Recipe
+                        </button>
+
+                    </div>
+                    <!-- END OF RIGHT SIDE -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- RECIPE MODAL -->
+        <div class="modal fade" id="recipeModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content" id="recipeModalContent">
+                    <!-- JS modal content -->
+                </div>
+            </div>
+        </div>
+
+        <!-- END OF RECIPE MANAGEMENT -->
+
+
+
+
+
         <!-- INVENTORY -->
-        <section class="col-lg-4">
+        <section class="col-lg-6">
             <div class="app-card h-100">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4><span class="section-number">3</span> Inventory</h4>
+                    <h4><span class="section-number">3</span> My Shelf</h4>
                     <button class="btn btn-outline-danger btn-sm" id="invClearBtn">Clear All</button>
                 </div>
 
@@ -158,11 +312,11 @@
         </section>
 
         <!-- SHOPPING LIST -->
-        <section class="col-lg-4">
+        <section class="col-lg-6">
             <div class="app-card h-100">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4><span class="section-number">4</span> Shopping List</h4>
-                    <button class="btn btn-outline-success my-4" id="ShoppingDoneBtn">Shopping done</button>                    
+                    <h4><span class="section-number">4</span> Cart</h4>
+                    <button class="btn btn-outline-success my-4" id="ShoppingDoneBtn">Shopping done</button>
                     <button class="btn btn-outline-danger btn-sm" id="shoppingclearBtn">Clear All</button>
                 </div>
 
@@ -194,138 +348,6 @@
                 </table>
             </div>
         </section>
-
-        <!--    RECIPE MANAGEMENT   -->
-
-        <section class="col-12">
-
-            <div class="app-card">
-
-                <h3 class="mb-4" id="recipeManagementHeader">
-                    <span class="section-number">4</span>
-                    Recipe Management
-                </h3>
-
-                <div class="row g-4">
-
-                    <!--    RECIPE SEARCH  -->
-
-                    <div class="col-lg-3 border-end">
-                        <h4 class="mb-4">Recipe Search</h4>
-
-                        <label class="form-label">Search</label>
-                        <input type="text" class="form-control mb-3" id="searchRecipeInput"
-                               placeholder="Search recipe...">
-
-                        <label class="form-label">Country</label>
-                        <select class="form-select mb-3" id="countrySelect">
-                            <option value="all">🌍 All Countries</option>
-                            <option value="Serbia">🇷🇸 Serbia</option>
-                            <option value="Ukraine">🇺🇦 Ukraine</option>
-                            <option value="Russia">🇷🇺 Russia</option>
-                            <option value="Lebanon">🇱🇧 Lebanon</option>
-                            <option value="India">🇮🇳 India</option>
-                        </select>
-
-                        <label class="form-label">Category</label>
-                        <select class="form-select mb-3" id="categorySelect">
-                            <option value="all">🍽️ All Categories</option>
-                            <option value="breakfast">🍳 Breakfast</option>
-                            <option value="lunch">🍗 Lunch</option>
-                            <option value="dinner">🍲 Dinner</option>
-                        </select>
-                    </div>
-
-                    <!--   END OF RECIPE SEARCH  -->
-
-                    <!--    RECIPES    -->
-
-                    <div class="col-lg-5 border-end">
-                        <h4 class="mb-4">Recipes</h4>
-
-                        <div class="row g-3 recipes-scroll" id="recipesContainer">
-                            <!-- JS recipes here -->
-                        </div>
-                    </div>
-
-                    <!--    END OF RECIPES  -->
-
-                    <!--    ADD RECIPE    -->
-
-                    <div class="col-lg-4">
-                        <h4 class="mb-4">Add Recipe</h4>
-
-                        <input type="text" class="form-control mb-3" id="newRecipeName" placeholder="Recipe name">
-
-                        <select class="form-select mb-3" id="newRecipeCountry">
-                            <option value="Serbia">Serbia</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="Russia">Russia</option>
-                            <option value="Lebanon">Lebanon</option>
-                            <option value="India">India</option>
-                        </select>
-
-                        <select class="form-select mb-3" id="newRecipeCategory">
-                            <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch</option>
-                            <option value="dinner">Dinner</option>
-                        </select>
-
-                        <input type="text" class="form-control mb-3" id="newRecipeImage"
-                               placeholder="Image path: images/sarma.jpg">
-
-                        <h6>Ingredients</h6>
-
-                        <input type="text" class="form-control mb-2" id="ingredientName" placeholder="Ingredient name">
-
-                        <div class="row g-2 mb-3">
-                            <div class="col-6">
-                                <input type="number" class="form-control" id="ingredientQuantity"
-                                       placeholder="Quantity">
-                            </div>
-
-                            <div class="col-6">
-                                <select class="form-select" id="ingredientUnit">
-                                    <option value="g">g</option>
-                                    <option value="ml">ml</option>
-                                    <option value="piece">piece</option>
-                                    <option value="tbsp">tbsp</option>
-                                    <option value="tsp">tsp</option>
-                                    <option value="slice">slice</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-outline-success w-100 mb-3" id="addIngredientBtn">
-                            Add Ingredient
-                        </button>
-
-                        <ul class="small" id="ingredientsPreview"></ul>
-
-                        <textarea class="form-control mb-3" id="newRecipeInstructions" rows="5"
-                                  placeholder="Write instructions. One step per line."></textarea>
-
-                        <button class="btn btn-success w-100" id="saveRecipeBtn">
-                            Save Recipe
-                        </button>
-                    </div>
-
-                    <!--   END OF ADD RECIPE    -->
-
-                </div>
-            </div>
-        </section>
-
-        <!-- RECIPE MODAL -->
-        <div class="modal fade" id="recipeModal" tabindex="-1">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content" id="recipeModalContent">
-                    <!-- JS modal content -->
-                </div>
-            </div>
-        </div>
-
-        <!--   END OF RECIPE MANAGEMENT   -->
     </div>
 </main>
 

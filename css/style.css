@@ -110,7 +110,7 @@ body{
 }
 
 .recipes-scroll{
-    max-height: 650px;
+    height: 400px;
     overflow-y: auto;
     padding-right: 8px;
 }
