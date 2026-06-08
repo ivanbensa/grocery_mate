@@ -11,6 +11,7 @@ class Inventory {
         this.items = [];
     }
 
+    /*
     renderTable() {
         const tbody = document.getElementById('invTableBody');
         tbody.innerHTML = '';
@@ -25,6 +26,48 @@ class Inventory {
                     <i class="fa-regular fa-trash-can text-danger" onclick="inventory.removeItem(${item.id})"></i>
                 </td>
             `;
+            tbody.appendChild(row);
+        });
+    }
+    */
+
+    // ivan add
+    renderTable() {
+        const tbody = document.getElementById('invTableBody');
+        tbody.innerHTML = '';
+
+        if (this.items.length === 0) {
+            tbody.innerHTML = `
+            <tr>
+                <td colspan="3" class="text-center py-5 empty-recipes">
+                    <i class="fa-solid fa-box-open fs-1 text-muted"></i>
+
+                    <h5 class="mt-3">
+                        Your shelf is empty
+                    </h5>
+
+                    <p class="text-muted">
+                        Add ingredients to your shelf.
+                    </p>
+                </td>
+            </tr>
+        `;
+
+            return;
+        }
+
+        this.items.forEach(item => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.quantity}</td>
+            <td class="text-end">
+                <i class="fa-solid fa-pen me-3" onclick="inventory.editItem(${item.id})"></i>
+                <i class="fa-regular fa-trash-can text-danger" onclick="inventory.removeItem(${item.id})"></i>
+            </td>
+        `;
+
             tbody.appendChild(row);
         });
     }
@@ -127,3 +170,6 @@ document.getElementById('invAddBtn').addEventListener('click', () => {
 document.getElementById('invClearBtn').addEventListener('click', () => {
     inventory.clearAll();
 });
+
+
+inventory.renderTable();    //  ivan add

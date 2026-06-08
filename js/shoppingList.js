@@ -86,6 +86,7 @@ function showShoppingForm (index = null)
     });
 }
 
+/*
 function displayShoppingTable()
 {
     tableBody.innerHTML = "";
@@ -104,6 +105,48 @@ function displayShoppingTable()
         </tr>`;
     }
 }
+ */
+// ivan add
+function displayShoppingTable() {
+
+    tableBody.innerHTML = "";
+
+    if (shoppingItems.length === 0) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="3" class="text-center py-5 empty-recipes">
+                    <i class="fa-solid fa-cart-shopping fs-1 text-muted"></i>
+
+                    <h5 class="mt-3">
+                        Your cart is empty
+                    </h5>
+
+                    <p class="text-muted">
+                        Add items to your shopping cart.
+                    </p>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    for (let i = 0; i < shoppingItems.length; i++) {
+        tableBody.innerHTML += `
+            <tr>
+                <td>${shoppingItems[i][0]}</td>
+                <td>${shoppingItems[i][1]}</td>
+                <td class="text-end">
+                    <i class="fa fa-check" onclick="moveToInventoryTable(${i})"></i>
+                    <i class="fa-solid fa-pen me-3 edit-btn" onclick="showShoppingForm(${i})"></i>
+                    <i class="fa-regular fa-trash-can text-danger delete-btn" onclick="deleteItem(${i})"></i>
+                </td>
+            </tr>
+        `;
+    }
+}
+
+
 
 function moveToInventoryTable(index=null)
 {

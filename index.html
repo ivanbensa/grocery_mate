@@ -26,7 +26,7 @@
     <div class="row g-4">
 
         <!-- DAILY PLATE -->
-        <section class="col-lg-4">
+        <section class="col-12 col-lg-4">
             <div class="app-card h-100">
                 <h4><span class="section-number">1</span> Daily Plate</h4>
 
@@ -50,7 +50,7 @@
 
         <!-- COOK BOOK -->
 
-        <section class="col-8">
+        <section class="col-12 col-lg-8">
 
             <div class="app-card">
 
@@ -248,7 +248,7 @@
 
 
         <!-- MY SHELF -->
-        <section class="col-lg-6">
+        <section class="col-12 col-lg-6">
             <div class="app-card h-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <h4><span class="section-number">3</span> My Shelf</h4>
@@ -272,6 +272,7 @@
                     </thead>
 
                     <tbody id="invTableBody">
+                    <!--
                     <tr>
                         <td></td>
                         <td></td>
@@ -307,6 +308,7 @@
                             <i class="fa-regular fa-trash-can text-danger"></i>
                         </td>
                     </tr>
+                    -->
                     </tbody>
                 </table>
             </div>
@@ -314,12 +316,33 @@
         <!-- END OF MY SHELF -->
 
         <!-- CART -->
-        <section class="col-lg-6">
+        <section class="col-12 col-lg-6">
             <div class="app-card h-100">
-                <div class="d-flex justify-content-between align-items-center">
+                <!--
+                <div class="d-flex justify-content-between align-items-center cart-header">
                     <h4><span class="section-number">4</span> Cart</h4>
                     <button class="btn btn-outline-success my-4" id="ShoppingDoneBtn">Shopping done</button>
-                    <button class="btn btn-outline-danger btn-sm" id="shoppingclearBtn">Clear All</button>
+                    <button class="btn btn-outline-danger my-4" id="shoppingclearBtn">Clear All</button>
+                </div>
+                -->
+
+                <div class="cart-header d-flex justify-content-between align-items-center">
+
+                    <h4>
+                        <span class="section-number">4</span>
+                        Cart
+                    </h4>
+
+                    <div class="cart-buttons">
+                        <button class="btn btn-outline-success btn-sm" id="ShoppingDoneBtn">
+                            Shopping done
+                        </button>
+
+                        <button class="btn btn-outline-danger btn-sm" id="shoppingclearBtn">
+                            Clear All
+                        </button>
+                    </div>
+
                 </div>
 
                 <button class="btn btn-outline-success my-4" id="addToShoppingListBtn">
