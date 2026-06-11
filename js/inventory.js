@@ -1,8 +1,9 @@
 class InventoryItem {
-    constructor(name, quantity) {
+    constructor(name, quantity, units) {
         this.id       = Date.now();
         this.name     = name;
         this.quantity = quantity;
+        this.units     = units;
     }
 }
 
@@ -62,6 +63,7 @@ class Inventory {
             row.innerHTML = `
             <td>${item.name}</td>
             <td>${item.quantity}</td>
+            <td>${item.units}</td>
             <td class="text-end">
                 <i class="fa-solid fa-pen me-3" onclick="inventory.editItem(${item.id})"></i>
                 <i class="fa-regular fa-trash-can text-danger" onclick="inventory.removeItem(${item.id})"></i>
@@ -77,7 +79,12 @@ class Inventory {
         container.innerHTML = `
             <div class="mb-3">
                 <input type="text" id="invName" class="form-control mb-2" placeholder="Item name">
-                <input type="text" id="invQuantity" class="form-control mb-2" placeholder="Quantity (e.g. 2 cups)">
+                <input type="number" id="invQuantity" class="form-control mb-2" placeholder="Quantity (e.g. 2 cups)">
+                <select class="form-select" id="ingredientUnit">
+                                    <option value="g">g</option>
+                                    <option value="ml">ml</option>
+                                    <option value="piece">piece</option>
+                                </select>
                 <button class="btn btn-success btn-sm me-2" onclick="inventory.confirmAdd()">Save</button>
                 <button class="btn btn-outline-secondary btn-sm" onclick="inventory.hideForm()">Cancel</button>
             </div>
@@ -88,7 +95,7 @@ class Inventory {
         document.getElementById('invFormContainer').innerHTML = '';
     }
 
-    addItem(name, quantity) {
+    addItem(name, quantity, units) {
         if (name.trim() === '') {
             alert('Please enter an item name.');
             return;
@@ -97,8 +104,12 @@ class Inventory {
             alert('Please enter a quantity.');
             return;
         }
+        if (units.trim() === '') {
+            alert('Please enter a quantity.');
+            return;
+        }
 
-        const item = new InventoryItem(name, quantity);
+        const item = new InventoryItem(name, quantity, units);
         this.items.push(item);
         this.renderTable();
     }
@@ -106,7 +117,8 @@ class Inventory {
     confirmAdd() {
         const name     = document.getElementById('invName').value;
         const quantity = document.getElementById('invQuantity').value;
-        inventory.addItem(name, quantity);
+        const units = document.getElementById('ingredientUnit').value;
+        inventory.addItem(name, quantity, units);
         this.hideForm();
     }
 
@@ -123,7 +135,8 @@ class Inventory {
         container.innerHTML = `
             <div class="mb-3">
                 <input type="text" id="invName" class="form-control mb-2" value="${item.name}">
-                <input type="text" id="invQuantity" class="form-control mb-2" value="${item.quantity}">
+                <input type="number" id="invQuantity" class="form-control mb-2" value="${item.quantity}">
+                <input type="text" id="ingredientUnit" class="form-control mb-2" value="${item.units}">
                 <button class="btn btn-success btn-sm me-2" onclick="inventory.confirmEdit(${item.id})">Save</button>
                 <button class="btn btn-outline-secondary btn-sm" onclick="inventory.hideForm()">Cancel</button>
             </div>
@@ -136,6 +149,7 @@ class Inventory {
 
         const name     = document.getElementById('invName').value;
         const quantity = document.getElementById('invQuantity').value;
+        const units = document.getElementById('ingredientUnit').value;
 
         if (name.trim() === '') {
             alert('Please enter an item name.');
@@ -145,9 +159,14 @@ class Inventory {
             alert('Please enter a quantity.');
             return;
         }
+        if (units.trim() === '') {
+            alert('Please enter a quantity.');
+            return;
+        }
 
         item.name     = name;
         item.quantity = quantity;
+        item.units = units;
 
         this.hideForm();
         this.renderTable();
