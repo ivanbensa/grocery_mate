@@ -1299,7 +1299,7 @@ let recipes = [
         name: "Labneh",
         country: "Lebanon",
         category: "breakfast",
-        image: "images/labneh.jpg",
+        image: "images/labneh.webp",
 
         ingredients: [
             { name: "yogurt", quantity: 500, unit: "ml" },
@@ -1461,7 +1461,7 @@ let recipes = [
         name: "Fattoush",
         country: "Lebanon",
         category: "lunch",
-        image: "images/fattoush.jpg",
+        image: "images/fattoush.webp",
 
         ingredients: [
             { name: "lettuce", quantity: 200, unit: "g" },
@@ -1501,7 +1501,7 @@ let recipes = [
         name: "Shawarma",
         country: "Lebanon",
         category: "lunch",
-        image: "images/shawarma.jpg",
+        image: "images/shawarma.webp",
 
         ingredients: [
             { name: "chicken", quantity: 500, unit: "g" },
@@ -1521,7 +1521,7 @@ let recipes = [
         name: "Makloubeh",
         country: "Lebanon",
         category: "lunch",
-        image: "images/makloubeh.jpg",
+        image: "images/makloubeh.webp",
 
         ingredients: [
             { name: "rice", quantity: 300, unit: "g" },
@@ -1563,7 +1563,7 @@ let recipes = [
         name: "Hummus",
         country: "Lebanon",
         category: "dinner",
-        image: "images/hummus.jpg",
+        image: "images/hummus.webp",
 
         ingredients: [
             { name: "chickpeas", quantity: 300, unit: "g" },
@@ -1583,7 +1583,7 @@ let recipes = [
         name: "Baba Ganoush",
         country: "Lebanon",
         category: "dinner",
-        image: "images/baba-ganoush.jpg",
+        image: "images/baba-ganoush.webp",
 
         ingredients: [
             { name: "eggplant", quantity: 2, unit: "piece" },
@@ -1643,7 +1643,7 @@ let recipes = [
         name: "Warak Enab",
         country: "Lebanon",
         category: "dinner",
-        image: "images/warak-enab.jpg",
+        image: "images/warak-enab.webp",
 
         ingredients: [
             { name: "grape leaves", quantity: 20, unit: "piece" },
@@ -1663,7 +1663,7 @@ let recipes = [
         name: "Arayes",
         country: "Lebanon",
         category: "dinner",
-        image: "images/arayes.jpg",
+        image: "images/arayes.webp",
 
         ingredients: [
             { name: "pita bread", quantity: 2, unit: "piece" },
