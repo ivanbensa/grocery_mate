@@ -1663,7 +1663,7 @@ let recipes = [
         name: "Arayes",
         country: "Lebanon",
         category: "dinner",
-        image: "images/arayes.webp",
+        image: "images/arayes.jpg",
 
         ingredients: [
             { name: "pita bread", quantity: 2, unit: "piece" },
