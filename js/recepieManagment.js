@@ -1,14 +1,14 @@
 ////////////////////        RECIPE SEARCH       ////////////////////////////////
 // GET ELEMENTS FROM RECIPE SEARCH
 
-const searchRecipeInput = document.getElementById("searchRecipeInput");
-const countrySelect = document.getElementById("countrySelect");
-const categorySelect = document.getElementById("categorySelect");
+const searchRecipeInput = document.getElementById("searchRecipeInput");     // Get the search input element from the page
+const countrySelect = document.getElementById("countrySelect");             // Get the country dropdown element from the page
+const categorySelect = document.getElementById("categorySelect");           // Get the category dropdown element from the page
 
 // RECIPE SEARCH EVENTS
 searchRecipeInput.addEventListener("input", filterRecipes); // Listen to the input field. Whenever the user types something, run filterRecipes()
 countrySelect.addEventListener("change", filterRecipes);    // Listen to the country select field. Whenever the user changes the selected option, run filterRecipes()
-categorySelect.addEventListener("change", filterRecipes);   // // Listen to the category select field. Whenever the user changes the selected option, run filterRecipes()
+categorySelect.addEventListener("change", filterRecipes);   // Listen to the category select field. Whenever the user changes the selected option, run filterRecipes()
 
 // SEARCH AND FILTER RECIPES
 function filterRecipes() {
@@ -100,6 +100,24 @@ renderRecipes([]); // Render page with no recipes selected
 
 const recipeModalContent = document.getElementById("recipeModalContent"); // Get recipe modal content container
 
+function getCountryFlag(country) {          // Return flag based on country
+    if (country === "Serbia") return "🇷🇸";
+    if (country === "Ukraine") return "🇺🇦";
+    if (country === "Russia") return "🇷🇺";
+    if (country === "Lebanon") return "🇱🇧";
+    if (country === "India") return "🇮🇳";
+    return "🌍";
+}
+
+function getCategoryIcon(category) { // Return icon based on category
+
+    if (category === "breakfast") return "🍳";
+    if (category === "lunch") return "🍽️";
+    if (category === "dinner") return "🌙";
+
+    return "🍴";
+}
+
 function openRecipe(recipe) { // Open selected recipe in the modal
 
     recipeModalContent.innerHTML = `
@@ -119,8 +137,8 @@ function openRecipe(recipe) { // Open selected recipe in the modal
                 alt="${recipe.name}"
             >
 
-            <p>🌍 ${recipe.country}</p>
-            <p>🍽️ ${recipe.category}</p>
+            <p>${getCountryFlag(recipe.country)} ${recipe.country}</p>
+            <p>${getCategoryIcon(recipe.category)} ${recipe.category}</p>
 
             <h5>Ingredients</h5>
 
