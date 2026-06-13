@@ -33,7 +33,7 @@ function filterRecipes() {
 
     renderRecipes(filteredRecipes);     // Show filtered recipes on the page
 }
-////////////////////        ENO OF RECIPE SEARCH       ////////////////////////////////
+////////////////////        END OF RECIPE SEARCH       ////////////////////////////////
 
 ////////////////////        RECIPE      ////////////////////////////////
 
@@ -154,3 +154,126 @@ function openRecipe(recipe) { // Open selected recipe in the modal
 }
 
 ////////////////////        END OF RECIPE      ////////////////////////////////
+
+////////////////////        ADD RECIPE      ////////////////////////////////
+
+// GET ADD RECIPE ELEMENTS
+const newRecipeName = document.getElementById("newRecipeName"); // Get recipe name input
+const newRecipeCountry = document.getElementById("newRecipeCountry"); // Get country select
+const newRecipeCategory = document.getElementById("newRecipeCategory"); // Get category select
+const newRecipeImage = document.getElementById("newRecipeImage"); // Get image URL input
+
+const ingredientName = document.getElementById("ingredientName"); // Get ingredient name input
+const ingredientQuantity = document.getElementById("ingredientQuantity"); // Get ingredient quantity input
+const ingredientUnit = document.getElementById("ingredientUnit"); // Get ingredient unit select
+
+const addIngredientBtn = document.getElementById("addIngredientBtn"); // Get Add Ingredient button
+const ingredientsPreview = document.getElementById("ingredientsPreview"); // Get ingredients preview list
+
+const newRecipeInstructions = document.getElementById("newRecipeInstructions"); // Get instructions textarea
+const saveRecipeBtn = document.getElementById("saveRecipeBtn"); // Get Save Recipe button
+
+let newRecipeIngredients = []; // Store ingredients before saving recipe
+
+
+// ADD INGREDIENT BUTTON
+addIngredientBtn.addEventListener("click", function () {
+
+    const name = ingredientName.value.trim(); // Get ingredient name
+    const quantity = Number(ingredientQuantity.value); // Get ingredient quantity as number
+    const unit = ingredientUnit.value; // Get ingredient unit
+
+    if (name === "" || quantity <= 0) {
+        alert("Please enter ingredient name and quantity.");
+        return;
+    }
+
+    newRecipeIngredients.push({
+        name: name,
+        quantity: quantity,
+        unit: unit
+    }); // Add ingredient to temporary array
+
+    renderIngredientsPreview(); // Show ingredients on the page
+
+    ingredientName.value = ""; // Clear ingredient name input
+    ingredientQuantity.value = ""; // Clear quantity input
+});
+
+
+// RENDER INGREDIENTS PREVIEW
+function renderIngredientsPreview() {
+
+    ingredientsPreview.innerHTML = ""; // Clear preview list
+
+    for (let i = 0; i < newRecipeIngredients.length; i++) {
+
+        const ingredient = newRecipeIngredients[i]; // Get current ingredient
+
+        ingredientsPreview.innerHTML += `
+            <li>
+                ${ingredient.quantity} ${ingredient.unit} ${ingredient.name}
+            </li>
+        `;
+    }
+}
+
+
+// SAVE RECIPE BUTTON
+saveRecipeBtn.addEventListener("click", function () {
+
+    const name = newRecipeName.value.trim(); // Get recipe name
+    const country = newRecipeCountry.value; // Get selected country
+    const category = newRecipeCategory.value; // Get selected category
+    const image = newRecipeImage.value.trim(); // Get image URL
+    const instructionsText = newRecipeInstructions.value.trim(); // Get instructions text
+
+    if (name === "" || image === "" || instructionsText === "") {
+        alert("Please fill recipe name, image URL and instructions.");
+        return;
+    }
+
+    if (newRecipeIngredients.length === 0) {
+        alert("Please add at least one ingredient.");
+        return;
+    }
+
+    const newRecipe = {
+        id: recipes.length + 1, // Create new ID based on recipes length
+        name: name,
+        country: country,
+        category: category,
+        image: image,
+        ingredients: newRecipeIngredients,
+        instructions: instructionsText.split("\n") // Convert each line into instruction step
+    };
+
+    recipes.push(newRecipe); // Add new recipe to recipes array
+
+
+
+    clearAddRecipeForm(); // Clear form after saving
+
+    alert("Recipe added successfully!");
+});
+
+
+// CLEAR FORM
+function clearAddRecipeForm() {
+
+    newRecipeName.value = "";
+    newRecipeCountry.value = "Serbia";
+    newRecipeCategory.value = "breakfast";
+    newRecipeImage.value = "";
+
+    ingredientName.value = "";
+    ingredientQuantity.value = "";
+    ingredientUnit.value = "g";
+
+    newRecipeInstructions.value = "";
+
+    newRecipeIngredients = [];
+    ingredientsPreview.innerHTML = "";
+}
+
+////////////////////        END OF ADD RECIPE      ////////////////////////////////
