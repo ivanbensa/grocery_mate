@@ -71,7 +71,7 @@ class Inventory {
         document.getElementById('invFormContainer').innerHTML = '';
     }
 
-    addItem(name, quantity, units) {
+    /*addItem(name, quantity, units) {
         if (name.trim() === '') {
             alert('Please enter an item name.');
             return;
@@ -85,7 +85,32 @@ class Inventory {
         this.items.push(item);
         this.renderTable();
     }
+*/
 
+    addItem(name, quantity, unit) {
+    if (name.trim() === '') {
+        alert('Please enter an item name.');
+        return;
+    }
+    if (quantity === '' || isNaN(quantity)) {
+        alert('Please enter a valid quantity.');
+        return;
+    }
+
+    const existingItem = this.items.find(function(item) {
+        return item.name.toLowerCase() === name.toLowerCase()
+            && item.unit === unit;
+    });
+
+    if (existingItem) {
+        existingItem.quantity += Number(quantity);
+    } else {
+        const item = new InventoryItem(name, Number(quantity), unit);
+        this.items.push(item);
+    }
+
+    this.renderTable();
+}
     confirmAdd() {
         const name     = document.getElementById('invName').value;
         const quantity = document.getElementById('invQuantity').value;
