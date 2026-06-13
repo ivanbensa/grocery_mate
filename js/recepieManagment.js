@@ -1,5 +1,4 @@
 ////////////////////        RECIPE SEARCH       ////////////////////////////////
-// GET ELEMENTS FROM RECIPE SEARCH
 
 const searchRecipeInput = document.getElementById("searchRecipeInput");     // Get the search input element from the page
 const countrySelect = document.getElementById("countrySelect");             // Get the country dropdown element from the page
@@ -64,12 +63,7 @@ function renderRecipes(recipesArray) { // Render all recipes from the array into
             <div class="col-lg-6">
                 <div class="recipe-small-card">
 
-                    <button
-                        class="small-add-btn"
-                        onclick="addItemToWeeklyPlan(${recipe.id - 1})"
-                    >
-                        +
-                    </button>
+                    <button class="small-add-btn" onclick="addItemToWeeklyPlan(${recipe.id - 1})">+</button>
 
                     <img src="${recipe.image}" alt="${recipe.name}">
 
@@ -82,14 +76,8 @@ function renderRecipes(recipesArray) { // Render all recipes from the array into
 
                         <br>
 
-                        <button
-                            class="btn btn-success btn-sm mt-3"
-                            onclick="openRecipe(recipes[${recipe.id - 1}])"
-                        >
-                            View Recipe
-                        </button>
+                        <button class="btn btn-success btn-sm mt-3" onclick="openRecipe(recipes[${recipe.id - 1}])">View Recipe</button>
                     </div>
-
                 </div>
             </div>
         `;
@@ -106,16 +94,17 @@ function getCountryFlag(country) {          // Return flag based on country
     if (country === "Russia") return "🇷🇺";
     if (country === "Lebanon") return "🇱🇧";
     if (country === "India") return "🇮🇳";
+
     return "🌍";
 }
 
 function getCategoryIcon(category) { // Return icon based on category
 
     if (category === "breakfast") return "🍳";
-    if (category === "lunch") return "🍽️";
+    if (category === "lunch") return "🍗";
     if (category === "dinner") return "🌙";
 
-    return "🍴";
+    return "🍽️";
 }
 
 function openRecipe(recipe) { // Open selected recipe in the modal
@@ -124,18 +113,11 @@ function openRecipe(recipe) { // Open selected recipe in the modal
         <div class="modal-header">
             <h4>${recipe.name}</h4>
 
-            <button
-                class="btn-close"
-                data-bs-dismiss="modal"
-            ></button>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
         <div class="modal-body">
-            <img
-                src="${recipe.image}"
-                class="img-fluid rounded mb-4"
-                alt="${recipe.name}"
-            >
+            <img src="${recipe.image}" class="img-fluid rounded mb-4" alt="${recipe.name}">
 
             <p>${getCountryFlag(recipe.country)} ${recipe.country}</p>
             <p>${getCategoryIcon(recipe.category)} ${recipe.category}</p>
