@@ -40,28 +40,18 @@ function showShoppingForm (index = null)
     }
     //Form to get the input values for new/updating the shopping list
     shoppingFormContainer.innerHTML = `
-    <div class="card p-3 mb-3 shadow-sm">
-        <div class="row g-2">
-            <div class="col-md-5">
-                <input type="text" id="shopItemInput" class="form-control" placeholder="Item Name" value="${itemVal}">
-            </div>
-            <div class="col-md-4">                
-                <input type="number" id="shopQtyInput" class="form-control" placeholder="Quantity" value="${qtyVal}">
-            </div>
-            <div class="col-md-4">                
-                <select class="form-select" id="ingredientUnit">
-                                    <option value="g">g</option>
-                                    <option value="ml">ml</option>
-                                    <option value="piece">piece</option>
-                                </select>
-            </div>
-
-            <div class="col-md-1 d-grid">
-                <button class="btn btn-success" id="saveItemBtn">${index !== null?"Update":"Add"}</button>
-                <button class="btn btn-secondary mt-2" id="cancelItemBtn">Cancel</button>    
-            </div>
+        <div class="mb-3">
+        <input type="text" id="shopItemInput" class="form-control mb-2" placeholder="Item Name" value="${itemVal}">
+        <input type="number" id="shopQtyInput" class="form-control mb-2" placeholder="Quantity" value="${qtyVal}">
+        <select class="form-select mb-2" id="ingredientUnit">
+            <option value="g" ${units === 'g' ? 'selected' : ''}>g</option>
+            <option value="ml" ${units === 'ml' ? 'selected' : ''}>ml</option>
+            <option value="piece" ${units === 'piece' ? 'selected' : ''}>piece</option>
+        </select>
+        <button class="btn btn-success btn-sm me-2" id="saveItemBtn">${index !== null ? 'Update' : 'Add'}</button>
+        <button class="btn btn-outline-secondary btn-sm" id="cancelItemBtn">Cancel</button>
         </div>
-    </div>`;
+    `;
 
     let saveBtn = document.getElementById("saveItemBtn");
     let cancelBtn = document.getElementById("cancelItemBtn");
@@ -98,27 +88,11 @@ function showShoppingForm (index = null)
     });
 }
 
-/*
-function displayShoppingTable()
-{
-    tableBody.innerHTML = "";
-
-    for(let i = 0; i < shoppingItems.length; i++)
-    {
-        tableBody.innerHTML += 
-        `<tr>
-            <td>${shoppingItems[i][0]}</td>
-            <td>${shoppingItems[i][1]}</td>
-            <td class = "text-end">
-                <i class="fa fa-check" onClick="moveToInventoryTable(${i})"></i>
-                <i class="fa-solid fa-pen me-3 edit-btn" onClick="showShoppingForm(${i})"></i>
-                <i class="fa-regular fa-trash-can text-danger delete-btn" onClick="deleteItem(${i})"></i>
-            <td>
-        </tr>`;
-    }
+function addToShoppingList(name, quantity, units) {
+    shoppingItems.push([name, quantity, units]);
+    displayShoppingTable();
 }
- */
-// ivan add
+
 function displayShoppingTable() {
 
     tableBody.innerHTML = "";
@@ -173,36 +147,6 @@ function moveToInventoryTable(index=null)
     }    else    {
         inventory.addItem(shoppingItems[index][0], shoppingItems[index][1], shoppingItems[index][2]);
         deleteItem(index);    }
-
-        /*for(let i = 0; i < shoppingItems.length; i++)
-        {
-            inventoryTableBody.innerHTML += 
-            `<tr>
-                <td>${shoppingItems[i][0]}</td>
-                <td>${shoppingItems[i][1]}</td>
-                <td>${shoppingItems[i][2]}</td>  <!--add-->
-                <td class = "text-end">
-                    <i class="fa-solid fa-pen me-3 edit-btn" onClick="showShoppingForm(${i})"></i>
-                    <i class="fa-regular fa-trash-can text-danger delete-btn" onClick="deleteItem(${i})"></i>
-                <td>
-            </tr>`;
-       }
-       shoppingItems = [];
-    }
-    else
-    {
-        inventoryTableBody.innerHTML += 
-        `<tr>
-            <td>${shoppingItems[index][0]}</td>
-            <td>${shoppingItems[index][1]}</td>
-            <td>${shoppingItems[index][2]}</td>  <!--add-->
-            <td class = "text-end">
-                <i class="fa-solid fa-pen me-3 edit-btn"></i>
-                <i class="fa-regular fa-trash-can text-danger delete-btn"></i>
-            <td>
-        </tr>`;
-        deleteItem(index);
-    }*/
 
 
 }
