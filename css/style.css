@@ -34,6 +34,18 @@ body{
     margin-right: 12px;
 }
 
+.small-add-btn{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    border: none;
+    background-color: var(--main-green);
+    color: var(--text-white);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+}
+
 /* END OF REUSABLE CLASSES */
 
 /*  COOK BOOK   */
@@ -53,6 +65,7 @@ body{
 
 /*  END OF COOK BOOK   */
 
+/* RECIPES HTML IN JS CODE */
 
 .recipe-small-card{
     position: relative;
@@ -73,17 +86,8 @@ body{
     margin: 0;
 }
 
-.small-add-btn{
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    border: none;
-    background-color: var(--main-green);
-    color: var(--text-white);
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-}
+
+/* END OF RECIPES HTML IN JS CODE */
 
 .weekly-item{
     display: grid;

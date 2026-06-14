@@ -5,9 +5,9 @@ const countrySelect = document.getElementById("countrySelect");             // G
 const categorySelect = document.getElementById("categorySelect");           // Get the category dropdown element from the page
 
 // RECIPE SEARCH EVENTS
-searchRecipeInput.addEventListener("input", filterRecipes); // Listen to the input field. Whenever the user types something, run filterRecipes()
-countrySelect.addEventListener("change", filterRecipes);    // Listen to the country select field. Whenever the user changes the selected option, run filterRecipes()
-categorySelect.addEventListener("change", filterRecipes);   // Listen to the category select field. Whenever the user changes the selected option, run filterRecipes()
+searchRecipeInput.addEventListener("input", filterRecipes);      // Listen to the input field. Whenever the user types something, run filterRecipes()
+countrySelect.addEventListener("change", filterRecipes);        // Listen to the country select field. Whenever the user changes the selected option, run filterRecipes()
+categorySelect.addEventListener("change", filterRecipes);       // Listen to the category select field. Whenever the user changes the selected option, run filterRecipes()
 
 // SEARCH AND FILTER RECIPES
 function filterRecipes() {
@@ -15,23 +15,23 @@ function filterRecipes() {
     const selectedCountry = countrySelect.value;                        // Get the selected country
     const selectedCategory = categorySelect.value;                      // Get the selected category
 
-    let filteredRecipes = [];   // Store matching recipes
+    let filteredRecipes = [];       // Store matching recipes
 
-    for (let i = 0; i < recipes.length; i++) {
-
-        const recipe = recipes[i];  // Get current recipe
+    for(let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i];      // Get current recipe from the recipes array
 
         const matchesSearch = recipe.name.toLowerCase().includes(searchRecipeValue);                    // Check if recipe matches search text
         const matchesCountry = selectedCountry === "all" || recipe.country === selectedCountry;         // Match selected country or show all countries
         const matchesCategory = selectedCategory === "all" || recipe.category === selectedCategory;     // Match selected category or show all categories
 
-        if (matchesSearch && matchesCountry && matchesCategory) {
-            filteredRecipes.push(recipe);   // Add recipe to filtered recipes
+        // Check if recipe matches all filters
+        if(matchesSearch && matchesCountry && matchesCategory) {
+            filteredRecipes.push(recipe);                           // Add matching recipe to filtered recipes
         }
     }
-
     renderRecipes(filteredRecipes);     // Show filtered recipes on the page
 }
+
 ////////////////////        END OF RECIPE SEARCH       ////////////////////////////////
 
 ////////////////////        RECIPE      ////////////////////////////////
@@ -40,12 +40,11 @@ function filterRecipes() {
 const recipesContainer = document.getElementById("recipesContainer");
 
 // RENDER RECIPES
-function renderRecipes(recipesArray) { // Render all recipes from the array into the recipes container
+function renderRecipes(recipesArray) {      // Render all recipes from the array into the recipes container
+    recipesContainer.innerHTML = "";        // Remove all recipes before rendering new ones
 
-    recipesContainer.innerHTML = ""; // Remove all recipes before rendering new ones
-
-    if (recipesArray.length === 0) { // If the array is empty
-        recipesContainer.innerHTML = ` 
+    if(recipesArray.length === 0) {         // If the array is empty
+        recipesContainer.innerHTML = `
             <div class="text-center py-5 empty-recipes">
                 <i class="fa-solid fa-utensils fs-1 text-muted"></i>
                 <h5 class="mt-3">Choose your recipes 🍽️</h5>
@@ -61,10 +60,8 @@ function renderRecipes(recipesArray) { // Render all recipes from the array into
 
         recipesContainer.innerHTML += `
             <div class="col-lg-6">
-                <div class="recipe-small-card">
-
+                <div class="recipe-small-card">     <!--CSS - RECIPES -->
                     <button class="small-add-btn" onclick="addItemToWeeklyPlan(${recipe.id - 1})">+</button>
-
                     <img src="${recipe.image}" alt="${recipe.name}">
 
                     <div class="p-3">
@@ -73,9 +70,7 @@ function renderRecipes(recipesArray) { // Render all recipes from the array into
                         <small class="text-muted">
                             ${recipe.country} • ${recipe.category}
                         </small>
-
                         <br>
-
                         <button class="btn btn-success btn-sm mt-3" onclick="openRecipe(recipes[${recipe.id - 1}])">View Recipe</button>
                     </div>
                 </div>
@@ -83,8 +78,7 @@ function renderRecipes(recipesArray) { // Render all recipes from the array into
         `;
     }
 }
-
-renderRecipes([]); // Render page with no recipes selected
+renderRecipes([]);       // Render page with no recipes selected
 
 const recipeModalContent = document.getElementById("recipeModalContent"); // Get recipe modal content container
 
@@ -98,7 +92,7 @@ function getCountryFlag(country) {          // Return flag based on country
     return "🌍";
 }
 
-function getCategoryIcon(category) { // Return icon based on category
+function getCategoryIcon(category) {    // Return icon based on category
 
     if (category === "breakfast") return "🍳";
     if (category === "lunch") return "🍗";
@@ -126,24 +120,25 @@ function openRecipe(recipe) { // Open selected recipe in the modal
 
             <ul>
                 ${recipe.ingredients.map(function (item) {
-        return `
+                    
+                return`
                         <li>
                             ${item.quantity}
                             ${item.unit}
                             ${item.name}
                         </li>
                     `;
-    }).join("")}
+                }).join("")}
             </ul>
 
             <h5>Instructions</h5>
 
             <ol>
                 ${recipe.instructions.map(function (step) {
-        return `
+                return `
                         <li>${step}</li>
                     `;
-    }).join("")}
+                }).join("")}
             </ol>
         </div>
     `;
