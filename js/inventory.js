@@ -88,6 +88,7 @@ class Inventory {
 */
 
     addItem(name, quantity, unit) {
+        /*
     if (name.trim() === '') {
         alert('Please enter an item name.');
         return;
@@ -96,6 +97,25 @@ class Inventory {
         alert('Please enter a valid quantity.');
         return;
     }
+*/
+
+        //IVAN START
+        if (name.trim() === '') {
+            showModal(
+                "Missing Item Name ⚠️",
+                "Please enter an item name."
+            );
+            return;
+        }
+
+        if (quantity === '' || isNaN(quantity)) {
+            showModal(
+                "Invalid Quantity ⚠️",
+                "Please enter a valid quantity."
+            );
+            return;
+        }
+        //IVAN END
 
     const existingItem = this.items.find(function(item) {
         return item.name.toLowerCase() === name.toLowerCase()
@@ -160,7 +180,7 @@ class Inventory {
         const name     = document.getElementById('invName').value;
         const quantity = document.getElementById('invQuantity').value;
         const unit    = document.getElementById('ingredientUnit').value;
-
+/*
         if (name.trim() === '') {
             alert('Please enter an item name.');
             return;
@@ -169,6 +189,25 @@ class Inventory {
             alert('Please enter a valid quantity.');
             return;
         }
+*/
+
+        //IVAN START
+        if (name.trim() === '') {
+            showModal(
+                "Missing Item Name ⚠️",
+                "Please enter an item name."
+            );
+            return;
+        }
+
+        if (quantity === '' || isNaN(quantity)) {
+            showModal(
+                "Invalid Quantity ⚠️",
+                "Please enter a valid quantity."
+            );
+            return;
+        }
+        //IVAN END
 
         item.name     = name;
         //item.quantity = quantity;
