@@ -1,3 +1,5 @@
+////////////////////        LOADING ANIMATION       ////////////////////////////////
+
 let load = 0;
 
 const loadingText = document.getElementById("loadingText");
@@ -18,7 +20,10 @@ const interval = setInterval(function(){
     }
 }, 25);
 
+////////////////////        END OF LOADING ANIMATION       ////////////////////////////////
+
 // UNIVERSAL BOOTSTRAP MODAL
+
 function showModal(title, message) {
 
     document.getElementById("appModalTitle").innerHTML = title;
@@ -30,3 +35,5 @@ function showModal(title, message) {
 
     modal.show();
 }
+
+// END OF UNIVERSAL BOOTSTRAP MODAL
