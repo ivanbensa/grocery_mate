@@ -184,7 +184,10 @@ addIngredientBtn.addEventListener("click", function () {
     const unit = ingredientUnit.value; // Get ingredient unit
 
     if (name === "" || quantity <= 0) {
-        alert("Please enter ingredient name and quantity.");
+        showModal(
+            "Missing Ingredient ⚠️",
+            "Please enter an ingredient name and quantity."
+        );
         return;
     }
 
@@ -229,12 +232,19 @@ saveRecipeBtn.addEventListener("click", function () {
     const instructionsText = newRecipeInstructions.value.trim(); // Get instructions text
 
     if (name === "" || image === "" || instructionsText === "") {
-        alert("Please fill recipe name, image URL and instructions.");
+        showModal(
+            "Missing Recipe Information ⚠️",
+            "Please enter a recipe name, image URL, and instructions."
+        );
+
         return;
     }
 
     if (newRecipeIngredients.length === 0) {
-        alert("Please add at least one ingredient.");
+        showModal(
+            "Missing Ingredients ⚠️",
+            "Please add at least one ingredient."
+        );
         return;
     }
 
@@ -254,7 +264,10 @@ saveRecipeBtn.addEventListener("click", function () {
 
     clearAddRecipeForm(); // Clear form after saving
 
-    alert("Recipe added successfully!");
+    showModal(
+        "Recipe Added Successfully ✅",
+        "Your recipe has been added successfully."
+    );
 });
 
 
