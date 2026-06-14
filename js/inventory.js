@@ -150,12 +150,7 @@ class Inventory {
 
         const unitOptions = `
             <option value="g" ${item.unit === 'g' ? 'selected' : ''}>g</option>
-            <option value="kg" ${item.unit === 'kg' ? 'selected' : ''}>kg</option>
             <option value="ml" ${item.unit === 'ml' ? 'selected' : ''}>ml</option>
-            <option value="l" ${item.unit === 'l' ? 'selected' : ''}>l</option>
-            <option value="tsp" ${item.unit === 'tsp' ? 'selected' : ''}>tsp</option>
-            <option value="tbsp" ${item.unit === 'tbsp' ? 'selected' : ''}>tbsp</option>
-            <option value="cup" ${item.unit === 'cup' ? 'selected' : ''}>cup</option>
             <option value="piece" ${item.unit === 'piece' ? 'selected' : ''}>piece</option>
         `;
 
