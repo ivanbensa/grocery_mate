@@ -88,6 +88,8 @@ function getCountryFlag(country) {          // Return flag based on country
     if (country === "Russia") return "🇷🇺";
     if (country === "Lebanon") return "🇱🇧";
     if (country === "India") return "🇮🇳";
+    if (country === "Other") return "🌐";
+
 
     return "🌍";
 }
@@ -96,7 +98,7 @@ function getCategoryIcon(category) {    // Return icon based on category
 
     if (category === "breakfast") return "🍳";
     if (category === "lunch") return "🍗";
-    if (category === "dinner") return "🌙";
+    if (category === "dinner") return "🍲";
 
     return "🍽️";
 }
