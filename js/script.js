@@ -17,3 +17,16 @@ const interval = setInterval(function(){
         }, 1000);
     }
 }, 25);
+
+// UNIVERSAL BOOTSTRAP MODAL
+function showModal(title, message) {
+
+    document.getElementById("appModalTitle").innerHTML = title;
+    document.getElementById("appModalBody").innerHTML = message;
+
+    const modal = new bootstrap.Modal(
+        document.getElementById("appModal")
+    );
+
+    modal.show();
+}
