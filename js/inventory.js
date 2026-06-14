@@ -34,7 +34,7 @@ class Inventory {
             row.innerHTML = `
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
-                <td>${item.units}</td>
+                <td>${item.unit}</td>
                 <td class="text-end">
                     <i class="fa-solid fa-pen me-3" onclick="inventory.editItem(${item.id})"></i>
                     <i class="fa-regular fa-trash-can text-danger" onclick="inventory.removeItem(${item.id})"></i>
@@ -71,7 +71,7 @@ class Inventory {
         document.getElementById('invFormContainer').innerHTML = '';
     }
 
-    /*addItem(name, quantity, units) {
+    /*addItem(name, quantity, unit) {
         if (name.trim() === '') {
             alert('Please enter an item name.');
             return;
@@ -81,7 +81,7 @@ class Inventory {
             return;
         }
 
-        const item = new InventoryItem(name, quantity, units);
+        const item = new InventoryItem(name, quantity, unit);
         this.items.push(item);
         this.renderTable();
     }
@@ -114,8 +114,8 @@ class Inventory {
     confirmAdd() {
         const name     = document.getElementById('invName').value;
         const quantity = document.getElementById('invQuantity').value;
-        const units    = document.getElementById('ingredientUnit').value;
-        inventory.addItem(name, quantity, units);
+        const unit    = document.getElementById('ingredientUnit').value;
+        inventory.addItem(name, quantity, unit);
         this.hideForm();
     }
 
@@ -129,14 +129,14 @@ class Inventory {
         if (!item) return;
 
         const unitOptions = `
-            <option value="g" ${item.units === 'g' ? 'selected' : ''}>g</option>
-            <option value="kg" ${item.units === 'kg' ? 'selected' : ''}>kg</option>
-            <option value="ml" ${item.units === 'ml' ? 'selected' : ''}>ml</option>
-            <option value="l" ${item.units === 'l' ? 'selected' : ''}>l</option>
-            <option value="tsp" ${item.units === 'tsp' ? 'selected' : ''}>tsp</option>
-            <option value="tbsp" ${item.units === 'tbsp' ? 'selected' : ''}>tbsp</option>
-            <option value="cup" ${item.units === 'cup' ? 'selected' : ''}>cup</option>
-            <option value="piece" ${item.units === 'piece' ? 'selected' : ''}>piece</option>
+            <option value="g" ${item.unit === 'g' ? 'selected' : ''}>g</option>
+            <option value="kg" ${item.unit === 'kg' ? 'selected' : ''}>kg</option>
+            <option value="ml" ${item.unit === 'ml' ? 'selected' : ''}>ml</option>
+            <option value="l" ${item.unit === 'l' ? 'selected' : ''}>l</option>
+            <option value="tsp" ${item.unit === 'tsp' ? 'selected' : ''}>tsp</option>
+            <option value="tbsp" ${item.unit === 'tbsp' ? 'selected' : ''}>tbsp</option>
+            <option value="cup" ${item.unit === 'cup' ? 'selected' : ''}>cup</option>
+            <option value="piece" ${item.unit === 'piece' ? 'selected' : ''}>piece</option>
         `;
 
         const container = document.getElementById('invFormContainer');
@@ -159,7 +159,7 @@ class Inventory {
 
         const name     = document.getElementById('invName').value;
         const quantity = document.getElementById('invQuantity').value;
-        const units    = document.getElementById('ingredientUnit').value;
+        const unit    = document.getElementById('ingredientUnit').value;
 
         if (name.trim() === '') {
             alert('Please enter an item name.');
@@ -171,8 +171,9 @@ class Inventory {
         }
 
         item.name     = name;
-        item.quantity = quantity;
-        item.units    = units;
+        //item.quantity = quantity;
+        item.quantity = Number(quantity);   //ivan
+        item.unit    = unit;
 
         this.hideForm();
         this.renderTable();

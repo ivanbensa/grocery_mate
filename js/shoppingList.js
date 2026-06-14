@@ -30,13 +30,13 @@ function showShoppingForm (index = null)
     editIndex = index;
     let itemVal = "";
     let qtyVal = "";
-    let units = "";     // add units
+    let unit = "";     // add unit
 
     if (index !== null)
     {
         itemVal = shoppingItems[index][0];
         qtyVal = shoppingItems[index][1];
-        units = shoppingItems[index][2];    // add units
+        unit = shoppingItems[index][2];    // add unit
     }
     //Form to get the input values for new/updating the shopping list
     shoppingFormContainer.innerHTML = `
@@ -44,9 +44,9 @@ function showShoppingForm (index = null)
         <input type="text" id="shopItemInput" class="form-control mb-2" placeholder="Item Name" value="${itemVal}">
         <input type="number" id="shopQtyInput" class="form-control mb-2" placeholder="Quantity" value="${qtyVal}">
         <select class="form-select mb-2" id="ingredientUnit">
-            <option value="g" ${units === 'g' ? 'selected' : ''}>g</option>
-            <option value="ml" ${units === 'ml' ? 'selected' : ''}>ml</option>
-            <option value="piece" ${units === 'piece' ? 'selected' : ''}>piece</option>
+            <option value="g" ${unit === 'g' ? 'selected' : ''}>g</option>
+            <option value="ml" ${unit === 'ml' ? 'selected' : ''}>ml</option>
+            <option value="piece" ${unit === 'piece' ? 'selected' : ''}>piece</option>
         </select>
         <button class="btn btn-success btn-sm me-2" id="saveItemBtn">${index !== null ? 'Update' : 'Add'}</button>
         <button class="btn btn-outline-secondary btn-sm" id="cancelItemBtn">Cancel</button>
@@ -59,9 +59,9 @@ function showShoppingForm (index = null)
     saveBtn.addEventListener("click", () => {
         let itemName = document.getElementById("shopItemInput").value.trim();
         let quantity = document.getElementById("shopQtyInput").value.trim();
-        let units = document.getElementById("ingredientUnit").value.trim();
+        let unit = document.getElementById("ingredientUnit").value.trim();
 
-        if (itemName === "" || quantity === "" || units === "")
+        if (itemName === "" || quantity === "" || unit === "")
         {
             alert("Please fill all fields");
             return;
@@ -69,14 +69,14 @@ function showShoppingForm (index = null)
 
         if (editIndex === null)
         {
-            shoppingItems.push([itemName, quantity, units]);
+            shoppingItems.push([itemName, quantity, unit]);
         }
 
         else
         {
             shoppingItems[editIndex][0] = itemName;
             shoppingItems[editIndex][1] = quantity;
-            shoppingItems[editIndex][2] = units;  // add units
+            shoppingItems[editIndex][2] = unit;  // add unit
         }
 
         shoppingFormContainer.innerHTML = "";
@@ -88,8 +88,8 @@ function showShoppingForm (index = null)
     });
 }
 
-function addToShoppingList(name, quantity, units) {
-    shoppingItems.push([name, quantity, units]);
+function addToShoppingList(name, quantity, unit) {
+    shoppingItems.push([name, quantity, unit]);
     displayShoppingTable();
 }
 

@@ -48,8 +48,38 @@ function removeItemFromSelectedDay(category) {
   renderSelectedDayPlan();
 }
 
+//IVAN
+function canAddRecipeToWeeklyPlan(recipe) {
+  for (let i = 0; i < recipe.ingredients.length; i++) {
+    const ingredient = recipe.ingredients[i];
+
+    const inventoryItem = inventory.items.find(function (item) {
+      return item.name.toLowerCase() === ingredient.name.toLowerCase()
+          && item.unit === ingredient.unit;
+    });
+
+    if (
+        !inventoryItem ||
+        Number(inventoryItem.quantity) < Number(ingredient.quantity)
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+//IVAN
+
 function addItemToWeeklyPlan(itemIndex) {
   const item = recipes[itemIndex];
+
+  //IVAN
+  if (!canAddRecipeToWeeklyPlan(item)) {
+    alert("You don't have enough ingredients in My Shelf.");
+    return;
+  }
+  //IVAN
+
   function notifyAlertItemAdded(date, replace = false) {
     const message = `${item.name} was added to ${date.toLocaleDateString()} - ${daysOfWeek[date.getDay()]}`;
     alert(message);
