@@ -71,7 +71,7 @@ function renderRecipes(recipesArray) {      // Render all recipes from the array
                             ${recipe.country} • ${recipe.category}
                         </small>
                         <br>
-                        <button class="btn btn-success btn-sm mt-3" onclick="openRecipe(recipes[${recipe.id - 1}])">View Recipe</button>
+                        <button class="btn btn-outline-success btn-sm px-5" onclick="openRecipe(recipes[${recipe.id - 1}])"><i class="fa-solid fa-eye"></i></button>
                     </div>
                 </div>
             </div>
@@ -153,20 +153,20 @@ function openRecipe(recipe) { // Open selected recipe in the modal
 ////////////////////        ADD RECIPE      ////////////////////////////////
 
 // GET ADD RECIPE ELEMENTS
-const newRecipeName = document.getElementById("newRecipeName"); // Get recipe name input
-const newRecipeCountry = document.getElementById("newRecipeCountry"); // Get country select
-const newRecipeCategory = document.getElementById("newRecipeCategory"); // Get category select
-const newRecipeImage = document.getElementById("newRecipeImage"); // Get image URL input
+const newRecipeName = document.getElementById("newRecipeName");                 // Get recipe name input
+const newRecipeCountry = document.getElementById("newRecipeCountry");           // Get country select
+const newRecipeCategory = document.getElementById("newRecipeCategory");         // Get category select
+const newRecipeImage = document.getElementById("newRecipeImage");               // Get image URL input
 
-const ingredientName = document.getElementById("ingredientName"); // Get ingredient name input
-const ingredientQuantity = document.getElementById("ingredientQuantity"); // Get ingredient quantity input
-const ingredientUnit = document.getElementById("ingredientUnit"); // Get ingredient unit select
+const ingredientName = document.getElementById("ingredientName");               // Get ingredient name input
+const ingredientQuantity = document.getElementById("ingredientQuantity");       // Get ingredient quantity input
+const ingredientUnit = document.getElementById("ingredientUnit");               // Get ingredient unit select
 
-const addIngredientBtn = document.getElementById("addIngredientBtn"); // Get Add Ingredient button
-const ingredientsPreview = document.getElementById("ingredientsPreview"); // Get ingredients preview list
+const addIngredientBtn = document.getElementById("addIngredientBtn");           // Get Add Ingredient button
+const ingredientsPreview = document.getElementById("ingredientsPreview");       // Get ingredients preview list
 
 const newRecipeInstructions = document.getElementById("newRecipeInstructions"); // Get instructions textarea
-const saveRecipeBtn = document.getElementById("saveRecipeBtn"); // Get Save Recipe button
+const saveRecipeBtn = document.getElementById("saveRecipeBtn");                 // Get Save Recipe button
 
 let newRecipeIngredients = []; // Store ingredients before saving recipe
 
