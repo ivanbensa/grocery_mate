@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">      <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="css/style.css">                                                                <!-- Custom CSS -->
     <title>Sous Chef</title>
 </head>
 
 <body>
 
+<!-- LOADING SCREEN -->
 <div id="loadingScreen">
-
     <img src="images/js-avengers-logo.png" alt="Loading">
-
     <h1 id="loadingText">0%</h1>
-
 </div>
+<!-- END OF LOADING SCREEN -->
 
+<!-- MAIN APPLICATION CONTENT -->
 <main class="container-fluid p-4">
 
     <div class="row g-4">
@@ -37,11 +37,10 @@
                 </div>
 
                 <div id="weeklyItemsContainer"></div>
-
-                <btn onclick="showSelectedDayGroupedIngredients()" class="btn btn-outline-success w-100 mt-4">
+                <button onclick="showSelectedDayGroupedIngredients()" class="btn btn-outline-success w-100 mt-4">
                     <i class="fa-solid fa-plus me-2"></i>
                     Calculate ingredients
-                </btn>
+                </button>
             </div>
         </section>
         <!-- END OF DAILY PLATE -->
@@ -51,11 +50,10 @@
         <!-- COOK BOOK -->
 
         <section class="col-12 col-lg-8">
+            <div class="app-card">  <!--CSS - COOK BOOK -->
 
-            <div class="app-card">
-
-                <h3 class="mb-4" id="recipeManagementHeader">
-                    <span class="section-number">2</span>
+                <h3 class="mb-4">
+                    <span class="section-number">2</span>   <!--CSS - REUSABLE CLASSES-->
                     CookBook
                 </h3>
 
@@ -66,73 +64,57 @@
 
                         <!-- RECIPE SEARCH -->
                         <div class="mb-4 border-bottom pb-4">
-
                             <h4 class="mb-4">Recipe Search</h4>
 
                             <div class="row g-3">
-
                                 <div class="col-md-4">
-
                                     <label class="form-label">Search</label>
-
                                     <input
                                             type="text"
                                             class="form-control"
                                             id="searchRecipeInput"
-                                            placeholder="Search recipe..."
+                                            placeholder="Search recipes..."
                                     >
-
                                 </div>
 
                                 <div class="col-md-4">
-
                                     <label class="form-label">Country</label>
-
                                     <select class="form-select" id="countrySelect">
                                         <option value="all">🌍 All Countries</option>
+                                        <option value="Other">🌐 Other</option>
                                         <option value="Serbia">🇷🇸 Serbia</option>
                                         <option value="Ukraine">🇺🇦 Ukraine</option>
                                         <option value="Russia">🇷🇺 Russia</option>
                                         <option value="Lebanon">🇱🇧 Lebanon</option>
                                         <option value="India">🇮🇳 India</option>
                                     </select>
-
                                 </div>
 
                                 <div class="col-md-4">
-
                                     <label class="form-label">Category</label>
-
                                     <select class="form-select" id="categorySelect">
                                         <option value="all">🍽️ All Categories</option>
                                         <option value="breakfast">🍳 Breakfast</option>
                                         <option value="lunch">🍗 Lunch</option>
                                         <option value="dinner">🍲 Dinner</option>
                                     </select>
-
                                 </div>
 
                             </div>
-
                         </div>
                         <!-- END OF RECIPE SEARCH -->
 
 
                         <!-- RECIPES -->
                         <div>
-
                             <h4 class="mb-4">Recipes</h4>
-
                             <div class="row g-3 recipes-scroll" id="recipesContainer">
                                 <!-- JS recipes here -->
                             </div>
-
                         </div>
                         <!-- END OF RECIPES -->
-
                     </div>
-                    <!-- END OF LEFT SIDE -->
-
+                    <!-- END OF LEFT SIDE: SEARCH + RECIPES -->
 
                     <!-- RIGHT SIDE: ADD RECIPE -->
                     <div class="col-lg-4">
@@ -377,6 +359,7 @@
         <!-- END OF CART -->
     </div>
 </main>
+<!-- END OF MAIN APPLICATION CONTENT -->
 
 <!-- APP MESSAGE MODAL -->
 
