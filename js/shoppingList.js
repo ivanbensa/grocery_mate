@@ -12,6 +12,7 @@ let table = tableBody.closest("table");
 table.parentElement.insertBefore(shoppingFormContainer, table);
 
 //Move all to Inventory
+/*
 toInventoryBtn.addEventListener("click", () => {
     if (shoppingItems.length === 0)
     {
@@ -22,6 +23,28 @@ toInventoryBtn.addEventListener("click", () => {
     alert("All items from Shopping cart moved to Inventory!!");
     displayShoppingTable();
 });
+ */
+
+//IVAN START
+toInventoryBtn.addEventListener("click", () => {
+    if (shoppingItems.length === 0) {
+        showModal(
+            "Shopping List Empty ⚠️",
+            "Your Shopping List is empty."
+        );
+
+        return;
+    }
+    moveToInventoryTable();
+    showModal(
+        "Items Moved Successfully ✅",
+        "All items from Shopping List have been moved to My Shelf."
+    );
+    displayShoppingTable();
+});
+//IVAN END
+
+
 
 let editIndex = null;
 
@@ -63,7 +86,14 @@ function showShoppingForm (index = null)
 
         if (itemName === "" || quantity === "" || unit === "")
         {
-            alert("Please fill all fields");
+            //alert("Please fill all fields");
+
+            //IVAN START
+            showModal(
+                "Missing Information ⚠️",
+                "Please fill in all fields."
+            );
+            //IVAN END
             return;
         }
 
