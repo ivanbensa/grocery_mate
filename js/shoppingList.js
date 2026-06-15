@@ -12,38 +12,27 @@ let table = tableBody.closest("table");
 table.parentElement.insertBefore(shoppingFormContainer, table);
 
 //Move all to Inventory
-/*
+
 toInventoryBtn.addEventListener("click", () => {
     if (shoppingItems.length === 0)
     {
-        alert("Shopping list is empty");
-        return;
-    }
-    moveToInventoryTable();
-    alert("All items from Shopping cart moved to Inventory!!");
-    displayShoppingTable();
-});
- */
-
-//IVAN START
-toInventoryBtn.addEventListener("click", () => {
-    if (shoppingItems.length === 0) {
+        //IVAN START
         showModal(
             "Shopping List Empty ⚠️",
             "Your Shopping List is empty."
         );
-
+        //IVAN END
         return;
     }
     moveToInventoryTable();
+    //IVAN START
     showModal(
         "Items Moved Successfully ✅",
         "All items from Shopping List have been moved to My Shelf."
     );
+    //IVAN END
     displayShoppingTable();
 });
-//IVAN END
-
 
 
 let editIndex = null;
@@ -177,7 +166,6 @@ function addMissingDailyIngredientsToShoppingList()
         );
     } else {
         showModal(
-            "Stock OK ✅",
             "Inventory has enough ingredients for the selected day.",
         );
     }
