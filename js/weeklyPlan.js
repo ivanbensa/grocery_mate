@@ -179,7 +179,7 @@ function getSelectedDayGroupedIngredients() {
  * Compares compiled daily recipes with shelf stock inventory.
  * Automatically adds items to shopping list if quantities fall short!
  */
-function checkIngredientsAndGenerateShoppingList() {
+/*function checkIngredientsAndGenerateShoppingList() {
   const requiredIngredients = getSelectedDayGroupedIngredients();
   
   if (requiredIngredients.length === 0) {
@@ -231,7 +231,7 @@ function checkIngredientsAndGenerateShoppingList() {
       "Checked items successfully. Your shelf inventory has enough stock to cook all planned meals for this day!"
     );
   }
-}
+}*/
 
 /** TEMPORARY: example on how to get selected day grouped ingredients. */
 function showSelectedDayGroupedIngredients() {

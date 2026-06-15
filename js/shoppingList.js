@@ -99,7 +99,7 @@ function showShoppingForm (index = null)
 
         if (editIndex === null)
         {
-            shoppingItems.push([itemName, quantity, unit]);
+            addToShoppingList(itemName, quantity, unit);
         }
 
         else
@@ -119,8 +119,68 @@ function showShoppingForm (index = null)
 }
 
 function addToShoppingList(name, quantity, unit) {
-    shoppingItems.push([name, quantity, unit]);
+    const normalizedName = name.trim().toLowerCase();
+    const normalizedUnit = (unit || "").trim().toLowerCase();
+    const existingIndex = shoppingItems.findIndex(
+        (item) =>
+            item[0].trim().toLowerCase() === normalizedName &&
+            (item[2] || "").trim().toLowerCase() === normalizedUnit,
+    );
+
+    if (existingIndex === -1) {
+        shoppingItems.push([name.trim(), quantity, unit]);
+    } else {
+        const currentQty = Number(shoppingItems[existingIndex][1]);
+        const addedQty = Number(quantity);
+
+        if (!Number.isNaN(currentQty) && !Number.isNaN(addedQty)) {
+            shoppingItems[existingIndex][1] = String(currentQty + addedQty);
+        } else {
+            shoppingItems[existingIndex][1] = quantity;
+        }
+    }
+
     displayShoppingTable();
+}
+
+function addMissingDailyIngredientsToShoppingList() 
+{
+    let requiredIngredients = getSelectedDayGroupedIngredients();
+    let addCounter = 0;
+
+    for (let i = 0; i < requiredIngredients.length; i++) {
+        let required = requiredIngredients[i];
+
+        let availableQty = 0;
+        for (let j = 0; j < inventory.items.length; j++) {
+            let invItem = inventory.items[j];
+            if (
+                invItem.name.trim().toLowerCase() === required.name.trim().toLowerCase() &&
+                (invItem.unit || "").trim().toLowerCase() === (required.unit || "").trim().toLowerCase()
+            ) {
+                availableQty = Number(invItem.quantity);
+                break;
+            }
+        }
+
+        let missingQty = Number(required.quantity) - availableQty;
+        if (missingQty > 0) {
+            addToShoppingList(required.name.trim(), String(missingQty), required.unit);
+            addCounter++;
+        }
+    }
+
+    if (addCounter > 0) {
+        showModal(
+            "Shopping List Updated 🛒",
+            `Added ${addCounter} missing ingredient${addCounter === 1 ? "" : "s"} to the cart.`,
+        );
+    } else {
+        showModal(
+            "Stock OK ✅",
+            "Inventory has enough ingredients for the selected day.",
+        );
+    }
 }
 
 function displayShoppingTable() {
@@ -203,4 +263,23 @@ function editItem(index)
     showShoppingForm(index);
 }
 
-displayShoppingTable(); 
+function addOrUpdateShoppingItem(name, quantity)
+{
+    const normalized = name.trim().toLowerCase();
+    const existingIndex = shoppingItems.findIndex(
+        (item) => item[0].trim().toLowerCase() === normalized,
+    );
+
+    if (existingIndex === -1)
+    {
+        shoppingItems.push([name.trim(), quantity.trim()]);
+    }
+    else
+    {
+        shoppingItems[existingIndex][1] = quantity.trim();
+    }
+
+    displayShoppingTable();
+}
+
+displayShoppingTable();
