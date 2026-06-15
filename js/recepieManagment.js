@@ -90,7 +90,6 @@ function getCountryFlag(country) {          // Return flag based on country
     if (country === "India") return "🇮🇳";
     if (country === "Other") return "🌐";
 
-
     return "🌍";
 }
 
@@ -174,13 +173,13 @@ let newRecipeIngredients = []; // Store ingredients before saving recipe
 
 
 // ADD INGREDIENT BUTTON
-addIngredientBtn.addEventListener("click", function () {
+addIngredientBtn.addEventListener("click", function () {             // Run this function when Add Ingredient button is clicked
 
-    const name = ingredientName.value.trim(); // Get ingredient name
-    const quantity = Number(ingredientQuantity.value); // Get ingredient quantity as number
-    const unit = ingredientUnit.value; // Get ingredient unit
+    const name = ingredientName.value.trim();           // Get ingredient name
+    const quantity = Number(ingredientQuantity.value);  // Get ingredient quantity as number
+    const unit = ingredientUnit.value;                  // Get ingredient unit
 
-    if (name === "" || quantity <= 0) {
+    if (name === "" || quantity <= 0) {     // Check if ingredient name or quantity is invalid
         showModal(
             "Missing Ingredient ⚠️",
             "Please enter an ingredient name and quantity."
@@ -207,7 +206,6 @@ function renderIngredientsPreview() {
     ingredientsPreview.innerHTML = ""; // Clear preview list
 
     for (let i = 0; i < newRecipeIngredients.length; i++) {
-
         const ingredient = newRecipeIngredients[i]; // Get current ingredient
 
         ingredientsPreview.innerHTML += `
@@ -222,18 +220,50 @@ function renderIngredientsPreview() {
 // SAVE RECIPE BUTTON
 saveRecipeBtn.addEventListener("click", function () {
 
-    const name = newRecipeName.value.trim(); // Get recipe name
-    const country = newRecipeCountry.value; // Get selected country
-    const category = newRecipeCategory.value; // Get selected category
-    const image = newRecipeImage.value.trim(); // Get image URL
-    const instructionsText = newRecipeInstructions.value.trim(); // Get instructions text
+    const name = newRecipeName.value.trim();                        // Get recipe name
+    const country = newRecipeCountry.value;                         // Get selected country
+    const category = newRecipeCategory.value;                       // Get selected category
+    const image = newRecipeImage.value.trim();                      // Get image URL
+    const instructionsText = newRecipeInstructions.value.trim();    // Get instructions text
 
-    if (name === "" || image === "" || instructionsText === "") {
+    // Check if required recipe fields are empty
+    if (country === "") {
         showModal(
-            "Missing Recipe Information ⚠️",
-            "Please enter a recipe name, image URL, and instructions."
+            "Missing Country ⚠️",
+            "Please select a country."
         );
+        return;
+    }
 
+    if (category === "") {
+        showModal(
+            "Missing Category ⚠️",
+            "Please select a category."
+        );
+        return;
+    }
+
+    if (name === "") {
+        showModal(
+            "Missing Recipe Name ⚠️",
+            "Please enter a recipe name."
+        );
+        return;
+    }
+
+    if (image === "") {
+        showModal(
+            "Missing Image URL ⚠️",
+            "Please enter an image URL."
+        );
+        return;
+    }
+
+    if (instructionsText === "") {
+        showModal(
+            "Missing Instructions ⚠️",
+            "Please enter recipe instructions."
+        );
         return;
     }
 
@@ -244,6 +274,7 @@ saveRecipeBtn.addEventListener("click", function () {
         );
         return;
     }
+    // END OF Check if required recipe fields are empty
 
     const newRecipe = {
         id: recipes.length + 1, // Create new ID based on recipes length
@@ -256,8 +287,6 @@ saveRecipeBtn.addEventListener("click", function () {
     };
 
     recipes.push(newRecipe); // Add new recipe to recipes array
-
-
 
     clearAddRecipeForm(); // Clear form after saving
 
