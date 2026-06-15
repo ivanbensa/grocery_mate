@@ -48,46 +48,12 @@ function removeItemFromSelectedDay(category) {
   renderSelectedDayPlan();
 }
 
-//IVAN START
-function canAddRecipeToWeeklyPlan(recipe) {
-  for (let i = 0; i < recipe.ingredients.length; i++) {
-    const ingredient = recipe.ingredients[i];
-
-    const inventoryItem = inventory.items.find(function (item) {
-      return item.name.toLowerCase() === ingredient.name.toLowerCase()
-          && item.unit === ingredient.unit;
-    });
-
-    if (
-        !inventoryItem ||
-        Number(inventoryItem.quantity) < Number(ingredient.quantity)
-    ) {
-      return false;
-    }
-  }
-
-  return true;
-}
-//IVAN END
-
 function addItemToWeeklyPlan(itemIndex) {
   const item = recipes[itemIndex];
 
-//IVAN START
-  if (!canAddRecipeToWeeklyPlan(item)) {
-    showModal(
-        "Not Enough Ingredients ❌",
-        "Oops! You're missing some ingredients.<br>Add them to your Shopping List and restock your shelf. 🛒"
-    );
-
-    return;
-  }
-  //IVAN END
-
   function notifyAlertItemAdded(date, replace = false) {
     const message = `${item.name} was added to ${date.toLocaleDateString()} - ${daysOfWeek[date.getDay()]}`;
-    //alert(message);
-
+    
     // IVAN START
     showModal(
         "Recipe Added ✅",
@@ -219,7 +185,6 @@ function showSelectedDayGroupedIngredients() {
   ).join('\n');
 
   const selectedDayLabel = `${selectedDay.toLocaleDateString()} - ${daysOfWeek[selectedDay.getDay()]}`;
-  //alert(`Ingredients for ${selectedDayLabel}\n\n${message}`);
 
   // IVAN START
   showModal(
