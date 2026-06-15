@@ -37,10 +37,14 @@
                 </div>
 
                 <div id="weeklyItemsContainer"></div>
-                <button onclick="showSelectedDayGroupedIngredients()" class="btn btn-outline-success w-100 mt-4">
-                    <i class="fa-solid fa-plus me-2"></i>
+                <button onclick="showSelectedDayGroupedIngredients()" class="btn btn-outline-secondary me-2">
+                    <i class="fa-solid fa-plus me-2"> </i>
                     Calculate ingredients
                 </button>
+                <button onclick="checkIngredientsAndGenerateShoppingList()" class="btn btn-success">
+            <i class="fa-solid fa-list-check me-1"></i>
+            Check Stock & Shop
+        </button>
             </div>
         </section>
         <!-- END OF DAILY PLATE -->
@@ -391,8 +395,8 @@
 <script src="js/script.js"></script>
 <script src="js/recipes.js"></script>
 <script src="js/recepieManagment.js"></script>
-<script src="js/weeklyPlan.js"></script>
 <script src="js/inventory.js"></script>
 <script src="js/shoppingList.js"></script>
+<script src="js/weeklyPlan.js"></script>
 </body>
 </html>
