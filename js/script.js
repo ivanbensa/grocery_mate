@@ -10,7 +10,6 @@ const interval = setInterval(function(){
     loadingText.innerText = `${load}%`;
     loadingText.style.opacity = 1 - load / 160;
 
-
     if(load >= 100){
         clearInterval(interval);
         loadingScreen.style.opacity = "0";
