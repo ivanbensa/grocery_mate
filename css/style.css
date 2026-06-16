@@ -214,12 +214,12 @@ body{
 
 #loadingText{
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
 
     transform: translate(-50%, -50%);
 
-    color: var(--text-white);
+    color: yellow;
     font-size: 4rem;
     font-weight: bold;
 
