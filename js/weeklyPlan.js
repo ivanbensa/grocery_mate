@@ -175,64 +175,6 @@ function getSelectedDayGroupedIngredients() {
   }, []);
 }
 
-/** * NEW CROSS-REFERENCE FUNCTION
- * Compares compiled daily recipes with shelf stock inventory.
- * Automatically adds items to shopping list if quantities fall short!
- */
-/*function checkIngredientsAndGenerateShoppingList() {
-  const requiredIngredients = getSelectedDayGroupedIngredients();
-  
-  if (requiredIngredients.length === 0) {
-    showModal("Plan Empty 📅", "No recipes are scheduled for this day.");
-    return;
-  }
-
-  let itemsAddedCount = 0;
-
-  requiredIngredients.forEach((req) => {
-    // Looks into the active instance of global Inventory object
-    const invItem = inventory.items.find(item => 
-      item.name.toLowerCase() === req.name.toLowerCase() && 
-      item.unit === req.unit
-    );
-
-    const availableQty = invItem ? Number(invItem.quantity) : 0;
-
-    // Check if shelf stock falls short of recipe demands
-    if (availableQty < req.quantity) {
-      const missingQty = req.quantity - availableQty;
-
-      // Cross-reference with global 'shoppingItems' matrix array
-      const existingShopIdx = shoppingItems.findIndex(shopItem => 
-        shopItem[0].toLowerCase() === req.name.toLowerCase() && 
-        shopItem[2] === req.unit
-      );
-
-      if (existingShopIdx !== -1) {
-        shoppingItems[existingShopIdx][1] = Number(shoppingItems[existingShopIdx][1]) + missingQty;
-      } else {
-        shoppingItems.push([req.name, missingQty, req.unit]);
-      }
-      
-      itemsAddedCount++;
-    }
-  });
-
-  // Re-render display results
-  if (itemsAddedCount > 0) {
-    displayShoppingTable(); 
-    showModal(
-      "Shopping List Updated 🛒", 
-      `Checked items successfully.<br>Added <b>${itemsAddedCount}</b> missing ingredient line items directly to your shopping cart!`
-    );
-  } else {
-    showModal(
-      "You're All Set! 🎉", 
-      "Checked items successfully. Your shelf inventory has enough stock to cook all planned meals for this day!"
-    );
-  }
-}*/
-
 /** TEMPORARY: example on how to get selected day grouped ingredients. */
 function showSelectedDayGroupedIngredients() {
   const ingredients = getSelectedDayGroupedIngredients();
