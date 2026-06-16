@@ -166,7 +166,7 @@ function addMissingDailyIngredientsToShoppingList()
         );
     } else {
         showModal(
-            "Inventory has enough ingredients for the selected day.",
+            "Inventory has enough ingredients for the selected day.", "All set!!"
         );
     }
 }
